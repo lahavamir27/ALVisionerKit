@@ -13,6 +13,29 @@
 		36E051958BB555F3D637C25CF6D3FCA6 /* ALVisionerKit-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = B7C157677AA3AA55D8DE2A85E3BD0202 /* ALVisionerKit-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		477E10F686DE859D65E7C14CC114554B /* Pods-ALVisionerKit_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 5A65348B1803F3CA95B775E47DDF8384 /* Pods-ALVisionerKit_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4DE2108609AAFB40473B3FC1FF25FA7F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
+		54713A4B238EA43D00C4C3F2 /* UIImageExtantion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54713A4A238EA43D00C4C3F2 /* UIImageExtantion.swift */; };
+		54713A4D238EA47600C4C3F2 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54713A4C238EA47600C4C3F2 /* Accelerate.framework */; };
+		54713A57238EA78400C4C3F2 /* ALCropFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54713A4F238EA78300C4C3F2 /* ALCropFileManager.swift */; };
+		54713A58238EA78400C4C3F2 /* ALPhotosAuthorization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54713A50238EA78300C4C3F2 /* ALPhotosAuthorization.swift */; };
+		54713A59238EA78400C4C3F2 /* ALImageProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54713A51238EA78300C4C3F2 /* ALImageProcessor.swift */; };
+		54713A5A238EA78400C4C3F2 /* ALVisionProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54713A52238EA78300C4C3F2 /* ALVisionProcessor.swift */; };
+		54713A5B238EA78400C4C3F2 /* ALAssetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54713A53238EA78300C4C3F2 /* ALAssetManager.swift */; };
+		54713A5C238EA78400C4C3F2 /* ALImageFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54713A54238EA78400C4C3F2 /* ALImageFetcher.swift */; };
+		54713A5D238EA78400C4C3F2 /* ALImageFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54713A55238EA78400C4C3F2 /* ALImageFilter.swift */; };
+		54713A5E238EA78400C4C3F2 /* ALVisionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54713A56238EA78400C4C3F2 /* ALVisionManager.swift */; };
+		54713A63238EA7A900C4C3F2 /* ALProcessAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54713A60238EA7A900C4C3F2 /* ALProcessAsset.swift */; };
+		54713A64238EA7A900C4C3F2 /* ALCustomProcessAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54713A61238EA7A900C4C3F2 /* ALCustomProcessAsset.swift */; };
+		54713A65238EA7A900C4C3F2 /* ProcessedALAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54713A62238EA7A900C4C3F2 /* ProcessedALAsset.swift */; };
+		54713A6B238EA7CC00C4C3F2 /* ALVisionProcessorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54713A67238EA7CB00C4C3F2 /* ALVisionProcessorType.swift */; };
+		54713A6C238EA7CC00C4C3F2 /* ALVisionError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54713A68238EA7CB00C4C3F2 /* ALVisionError.swift */; };
+		54713A6D238EA7CC00C4C3F2 /* ALPhotosAuthorizationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54713A69238EA7CC00C4C3F2 /* ALPhotosAuthorizationError.swift */; };
+		54713A6E238EA7CC00C4C3F2 /* FaceClustaringError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54713A6A238EA7CC00C4C3F2 /* FaceClustaringError.swift */; };
+		54713A73238EA7EB00C4C3F2 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54713A70238EA7EB00C4C3F2 /* Data.swift */; };
+		54713A74238EA7EB00C4C3F2 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54713A71238EA7EB00C4C3F2 /* Array.swift */; };
+		54713A75238EA7EB00C4C3F2 /* scaling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54713A72238EA7EB00C4C3F2 /* scaling.swift */; };
+		54713A78238EA82C00C4C3F2 /* ALStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54713A77238EA82C00C4C3F2 /* ALStack.swift */; };
+		54713A7B238EA85700C4C3F2 /* ALOperators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54713A7A238EA85700C4C3F2 /* ALOperators.swift */; };
+		54713A7E238EA87200C4C3F2 /* ClusterMangerOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54713A7D238EA87200C4C3F2 /* ClusterMangerOptions.swift */; };
 		59EBBF720AA6BB7FDCF1A6524A4BAB12 /* ReplaceMe.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B13894D78A4F58E704C62ADD79579D /* ReplaceMe.swift */; };
 		767BF5E79C1AAA57F780BDEE457298A4 /* Pods-ALVisionerKit_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F2189B2CEA404B807F0F312EF450A0A /* Pods-ALVisionerKit_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9B987EB2B4EC98A15556D776D186E744 /* Pods-ALVisionerKit_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D515F823A2216E924C71202BC48A981 /* Pods-ALVisionerKit_Tests-dummy.m */; };
@@ -48,6 +71,29 @@
 		3D515F823A2216E924C71202BC48A981 /* Pods-ALVisionerKit_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-ALVisionerKit_Tests-dummy.m"; sourceTree = "<group>"; };
 		3F2189B2CEA404B807F0F312EF450A0A /* Pods-ALVisionerKit_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-ALVisionerKit_Tests-umbrella.h"; sourceTree = "<group>"; };
 		4E25F6439D34C1F43AAB3ECD70FE7CDB /* Pods-ALVisionerKit_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-ALVisionerKit_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		54713A4A238EA43D00C4C3F2 /* UIImageExtantion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtantion.swift; sourceTree = "<group>"; };
+		54713A4C238EA47600C4C3F2 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		54713A4F238EA78300C4C3F2 /* ALCropFileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ALCropFileManager.swift; sourceTree = "<group>"; };
+		54713A50238EA78300C4C3F2 /* ALPhotosAuthorization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ALPhotosAuthorization.swift; sourceTree = "<group>"; };
+		54713A51238EA78300C4C3F2 /* ALImageProcessor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ALImageProcessor.swift; sourceTree = "<group>"; };
+		54713A52238EA78300C4C3F2 /* ALVisionProcessor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ALVisionProcessor.swift; sourceTree = "<group>"; };
+		54713A53238EA78300C4C3F2 /* ALAssetManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ALAssetManager.swift; sourceTree = "<group>"; };
+		54713A54238EA78400C4C3F2 /* ALImageFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ALImageFetcher.swift; sourceTree = "<group>"; };
+		54713A55238EA78400C4C3F2 /* ALImageFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ALImageFilter.swift; sourceTree = "<group>"; };
+		54713A56238EA78400C4C3F2 /* ALVisionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ALVisionManager.swift; sourceTree = "<group>"; };
+		54713A60238EA7A900C4C3F2 /* ALProcessAsset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ALProcessAsset.swift; sourceTree = "<group>"; };
+		54713A61238EA7A900C4C3F2 /* ALCustomProcessAsset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ALCustomProcessAsset.swift; sourceTree = "<group>"; };
+		54713A62238EA7A900C4C3F2 /* ProcessedALAsset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProcessedALAsset.swift; sourceTree = "<group>"; };
+		54713A67238EA7CB00C4C3F2 /* ALVisionProcessorType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ALVisionProcessorType.swift; sourceTree = "<group>"; };
+		54713A68238EA7CB00C4C3F2 /* ALVisionError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ALVisionError.swift; sourceTree = "<group>"; };
+		54713A69238EA7CC00C4C3F2 /* ALPhotosAuthorizationError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ALPhotosAuthorizationError.swift; sourceTree = "<group>"; };
+		54713A6A238EA7CC00C4C3F2 /* FaceClustaringError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaceClustaringError.swift; sourceTree = "<group>"; };
+		54713A70238EA7EB00C4C3F2 /* Data.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
+		54713A71238EA7EB00C4C3F2 /* Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
+		54713A72238EA7EB00C4C3F2 /* scaling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = scaling.swift; sourceTree = "<group>"; };
+		54713A77238EA82C00C4C3F2 /* ALStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ALStack.swift; sourceTree = "<group>"; };
+		54713A7A238EA85700C4C3F2 /* ALOperators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ALOperators.swift; sourceTree = "<group>"; };
+		54713A7D238EA87200C4C3F2 /* ClusterMangerOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClusterMangerOptions.swift; sourceTree = "<group>"; };
 		5A65348B1803F3CA95B775E47DDF8384 /* Pods-ALVisionerKit_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-ALVisionerKit_Example-umbrella.h"; sourceTree = "<group>"; };
 		64B43FCEF2663DF22D3C9B61909FB478 /* Pods_ALVisionerKit_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ALVisionerKit_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BA25A475E348B3197554DEC4B5254E5 /* Pods-ALVisionerKit_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ALVisionerKit_Example-frameworks.sh"; sourceTree = "<group>"; };
@@ -77,6 +123,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0D6E1B99DDC8623533CAD61B01A08576 /* Foundation.framework in Frameworks */,
+				54713A4D238EA47600C4C3F2 /* Accelerate.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -109,12 +156,90 @@
 			name = Pod;
 			sourceTree = "<group>";
 		};
+		54713A4E238EA6B600C4C3F2 /* Framework */ = {
+			isa = PBXGroup;
+			children = (
+				54713A53238EA78300C4C3F2 /* ALAssetManager.swift */,
+				54713A4F238EA78300C4C3F2 /* ALCropFileManager.swift */,
+				54713A54238EA78400C4C3F2 /* ALImageFetcher.swift */,
+				54713A55238EA78400C4C3F2 /* ALImageFilter.swift */,
+				54713A51238EA78300C4C3F2 /* ALImageProcessor.swift */,
+				54713A50238EA78300C4C3F2 /* ALPhotosAuthorization.swift */,
+				54713A56238EA78400C4C3F2 /* ALVisionManager.swift */,
+				54713A52238EA78300C4C3F2 /* ALVisionProcessor.swift */,
+			);
+			path = Framework;
+			sourceTree = "<group>";
+		};
+		54713A5F238EA78800C4C3F2 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				54713A61238EA7A900C4C3F2 /* ALCustomProcessAsset.swift */,
+				54713A60238EA7A900C4C3F2 /* ALProcessAsset.swift */,
+				54713A62238EA7A900C4C3F2 /* ProcessedALAsset.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		54713A66238EA7B800C4C3F2 /* Enum */ = {
+			isa = PBXGroup;
+			children = (
+				54713A69238EA7CC00C4C3F2 /* ALPhotosAuthorizationError.swift */,
+				54713A68238EA7CB00C4C3F2 /* ALVisionError.swift */,
+				54713A67238EA7CB00C4C3F2 /* ALVisionProcessorType.swift */,
+				54713A6A238EA7CC00C4C3F2 /* FaceClustaringError.swift */,
+			);
+			path = Enum;
+			sourceTree = "<group>";
+		};
+		54713A6F238EA7D700C4C3F2 /* Extention */ = {
+			isa = PBXGroup;
+			children = (
+				54713A71238EA7EB00C4C3F2 /* Array.swift */,
+				54713A70238EA7EB00C4C3F2 /* Data.swift */,
+				54713A72238EA7EB00C4C3F2 /* scaling.swift */,
+			);
+			path = Extention;
+			sourceTree = "<group>";
+		};
+		54713A76238EA7F400C4C3F2 /* DataStructure */ = {
+			isa = PBXGroup;
+			children = (
+				54713A77238EA82C00C4C3F2 /* ALStack.swift */,
+			);
+			path = DataStructure;
+			sourceTree = "<group>";
+		};
+		54713A79238EA83A00C4C3F2 /* Operators */ = {
+			isa = PBXGroup;
+			children = (
+				54713A7A238EA85700C4C3F2 /* ALOperators.swift */,
+			);
+			path = Operators;
+			sourceTree = "<group>";
+		};
+		54713A7C238EA85D00C4C3F2 /* Options */ = {
+			isa = PBXGroup;
+			children = (
+				54713A7D238EA87200C4C3F2 /* ClusterMangerOptions.swift */,
+			);
+			path = Options;
+			sourceTree = "<group>";
+		};
 		7536D99C382D6EF9D28D52C5E9F19BE0 /* ALVisionerKit */ = {
 			isa = PBXGroup;
 			children = (
+				54713A7C238EA85D00C4C3F2 /* Options */,
+				54713A79238EA83A00C4C3F2 /* Operators */,
+				54713A76238EA7F400C4C3F2 /* DataStructure */,
+				54713A6F238EA7D700C4C3F2 /* Extention */,
+				54713A66238EA7B800C4C3F2 /* Enum */,
+				54713A5F238EA78800C4C3F2 /* Data */,
+				54713A4E238EA6B600C4C3F2 /* Framework */,
 				D3B13894D78A4F58E704C62ADD79579D /* ReplaceMe.swift */,
 				170704BA8D5130AC4F9F7B517F8ADB62 /* Pod */,
 				EFF8E6AA3D59D5A976431A13491E7A67 /* Support Files */,
+				54713A4A238EA43D00C4C3F2 /* UIImageExtantion.swift */,
 			);
 			name = ALVisionerKit;
 			path = ../..;
@@ -202,6 +327,7 @@
 		D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				54713A4C238EA47600C4C3F2 /* Accelerate.framework */,
 				C0834CEBB1379A84116EF29F93051C60 /* iOS */,
 			);
 			name = Frameworks;
@@ -370,8 +496,30 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				54713A5D238EA78400C4C3F2 /* ALImageFilter.swift in Sources */,
+				54713A78238EA82C00C4C3F2 /* ALStack.swift in Sources */,
+				54713A74238EA7EB00C4C3F2 /* Array.swift in Sources */,
+				54713A58238EA78400C4C3F2 /* ALPhotosAuthorization.swift in Sources */,
+				54713A5E238EA78400C4C3F2 /* ALVisionManager.swift in Sources */,
+				54713A59238EA78400C4C3F2 /* ALImageProcessor.swift in Sources */,
+				54713A6D238EA7CC00C4C3F2 /* ALPhotosAuthorizationError.swift in Sources */,
+				54713A6E238EA7CC00C4C3F2 /* FaceClustaringError.swift in Sources */,
+				54713A4B238EA43D00C4C3F2 /* UIImageExtantion.swift in Sources */,
+				54713A64238EA7A900C4C3F2 /* ALCustomProcessAsset.swift in Sources */,
+				54713A7B238EA85700C4C3F2 /* ALOperators.swift in Sources */,
+				54713A75238EA7EB00C4C3F2 /* scaling.swift in Sources */,
 				1C2F8312678867204D9F6B9B2242616F /* ALVisionerKit-dummy.m in Sources */,
+				54713A5C238EA78400C4C3F2 /* ALImageFetcher.swift in Sources */,
+				54713A57238EA78400C4C3F2 /* ALCropFileManager.swift in Sources */,
 				59EBBF720AA6BB7FDCF1A6524A4BAB12 /* ReplaceMe.swift in Sources */,
+				54713A65238EA7A900C4C3F2 /* ProcessedALAsset.swift in Sources */,
+				54713A5A238EA78400C4C3F2 /* ALVisionProcessor.swift in Sources */,
+				54713A6B238EA7CC00C4C3F2 /* ALVisionProcessorType.swift in Sources */,
+				54713A6C238EA7CC00C4C3F2 /* ALVisionError.swift in Sources */,
+				54713A73238EA7EB00C4C3F2 /* Data.swift in Sources */,
+				54713A7E238EA87200C4C3F2 /* ClusterMangerOptions.swift in Sources */,
+				54713A5B238EA78400C4C3F2 /* ALAssetManager.swift in Sources */,
+				54713A63238EA7A900C4C3F2 /* ALProcessAsset.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -557,7 +705,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -619,7 +767,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;

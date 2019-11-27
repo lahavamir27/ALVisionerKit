@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1B6AAF6925A9B22966BD67D3 /* Pods_ALVisionerKit_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02F4C01488967FA615E00DE7 /* Pods_ALVisionerKit_Tests.framework */; };
+		54713A81238EAC6200C4C3F2 /* wave.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 54713A80238EAC6200C4C3F2 /* wave.mlmodel */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
@@ -34,6 +35,7 @@
 		1E70FD30BE3352C8C4EC79F6 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		2099ABCDE22B8187756AD91D /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		53686AA32ACAD0B6813F4F73 /* ALVisionerKit.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = ALVisionerKit.podspec; path = ../ALVisionerKit.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		54713A80238EAC6200C4C3F2 /* wave.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = wave.mlmodel; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* ALVisionerKit_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ALVisionerKit_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -69,6 +71,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		54713A7F238EAC4C00C4C3F2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				54713A80238EAC6200C4C3F2 /* wave.mlmodel */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		607FACC71AFB9204008FA782 = {
 			isa = PBXGroup;
 			children = (
@@ -93,6 +103,7 @@
 		607FACD21AFB9204008FA782 /* Example for ALVisionerKit */ = {
 			isa = PBXGroup;
 			children = (
+				54713A7F238EAC4C00C4C3F2 /* Model */,
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
 				607FACD71AFB9204008FA782 /* ViewController.swift */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
@@ -332,6 +343,7 @@
 			files = (
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
+				54713A81238EAC6200C4C3F2 /* wave.mlmodel in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
