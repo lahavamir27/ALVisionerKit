@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'ALVisionerKit_Example' do
+  pod 'ALVisionerKit', :path => '../'
+
+  target 'ALVisionerKit_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
