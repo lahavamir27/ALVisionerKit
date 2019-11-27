@@ -1,0 +1,6 @@
+framework module ALVisionerKit {
+  umbrella header "ALVisionerKit-umbrella.h"
+
+  export *
+  module * { export * }
+}

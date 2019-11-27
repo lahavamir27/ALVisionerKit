@@ -1,0 +1,16 @@
+PODS:
+  - ALVisionerKit (0.1.0)
+
+DEPENDENCIES:
+  - ALVisionerKit (from `../`)
+
+EXTERNAL SOURCES:
+  ALVisionerKit:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  ALVisionerKit: 08d13d11923e219c38bc2e4a578dcd6fe30ed68e
+
+PODFILE CHECKSUM: 9e5298eb800ba317b7b166e5b21fb2e266924480
+
+COCOAPODS: 1.8.4
