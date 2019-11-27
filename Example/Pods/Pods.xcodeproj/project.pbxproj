@@ -219,6 +219,7 @@
 		54713A7C238EA85D00C4C3F2 /* Options */ = {
 			isa = PBXGroup;
 			children = (
+				54713A7D238EA87200C4C3F2 /* ClusterMangerOptions.swift */,
 			);
 			path = Options;
 			sourceTree = "<group>";
@@ -234,7 +235,6 @@
 				54713A5F238EA78800C4C3F2 /* Data */,
 				54713A4E238EA6B600C4C3F2 /* Framework */,
 				D3B13894D78A4F58E704C62ADD79579D /* ReplaceMe.swift */,
-				54713A7D238EA87200C4C3F2 /* ClusterMangerOptions.swift */,
 				170704BA8D5130AC4F9F7B517F8ADB62 /* Pod */,
 				EFF8E6AA3D59D5A976431A13491E7A67 /* Support Files */,
 			);
