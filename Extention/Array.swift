@@ -19,6 +19,8 @@ extension Array {
 
 public extension Array where Element == ProcessedALAsset {
     func printObjects() {
+        print("\n*************************************************************")
+        print("detect \(self.count) photos \n")
         self.forEach { (obj) in
             print("\n*************************************************************  \nLocal Identifier: \(obj.localIdentifier) \nImage Quality: \(obj.imageQuality) \nCategories: \(obj.categories) \nFaces Bounding Boxes: \(obj.boundingBoxes)")
         }
