@@ -19,15 +19,19 @@ class ViewController: UIViewController {
             switch result {
             case .success(_):
                 // User Approve Permission
+                
+                // fetch user assets from galley
                 let fetchOptions = ALFetchAssetsOptions()
                 fetchOptions.numberOfPhotos = 20
                 let assetsManager = ALAssetManager()
                 let assets = assetsManager.getUserPhotos(with: .allAssets, fetchOptions: fetchOptions)
+                
+                // detect objects, faces rects and face quality (0-1)
                 ALVisionManager.detect(in: assets, with: [.faceDetection,.imageQuality,.objectDetection]) { (result) in
                     switch result {
                     case .success(let objs):
                         objs.printObjects()
-                        // do something with detet asstes
+                        // do something with deteted assets
                         break
                     case .failure(_):break
                     }
@@ -36,12 +40,7 @@ class ViewController: UIViewController {
                 // User denied Permission
                 
             }
-            
-
-
         }
-        
-
         // Do any additional setup after loading the view, typically from a nib.
     }
 
