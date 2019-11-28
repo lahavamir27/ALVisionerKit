@@ -166,7 +166,8 @@
 				54713A56238EA78400C4C3F2 /* ALVisionManager.swift */,
 				54713A52238EA78300C4C3F2 /* ALVisionProcessor.swift */,
 			);
-			path = Framework;
+			name = Framework;
+			path = ALVisionerKit/Framework;
 			sourceTree = "<group>";
 		};
 		54713A5F238EA78800C4C3F2 /* Data */ = {
@@ -176,7 +177,8 @@
 				54713A60238EA7A900C4C3F2 /* ALProcessAsset.swift */,
 				54713A62238EA7A900C4C3F2 /* ProcessedALAsset.swift */,
 			);
-			path = Data;
+			name = Data;
+			path = ALVisionerKit/Data;
 			sourceTree = "<group>";
 		};
 		54713A66238EA7B800C4C3F2 /* Enum */ = {
@@ -187,7 +189,8 @@
 				54713A67238EA7CB00C4C3F2 /* ALVisionProcessorType.swift */,
 				54713A6A238EA7CC00C4C3F2 /* FaceClustaringError.swift */,
 			);
-			path = Enum;
+			name = Enum;
+			path = ALVisionerKit/Enum;
 			sourceTree = "<group>";
 		};
 		54713A6F238EA7D700C4C3F2 /* Extention */ = {
@@ -197,7 +200,8 @@
 				54713A70238EA7EB00C4C3F2 /* Data.swift */,
 				54713A72238EA7EB00C4C3F2 /* scaling.swift */,
 			);
-			path = Extention;
+			name = Extention;
+			path = ALVisionerKit/Extention;
 			sourceTree = "<group>";
 		};
 		54713A76238EA7F400C4C3F2 /* DataStructure */ = {
@@ -205,7 +209,8 @@
 			children = (
 				54713A77238EA82C00C4C3F2 /* ALStack.swift */,
 			);
-			path = DataStructure;
+			name = DataStructure;
+			path = ALVisionerKit/DataStructure;
 			sourceTree = "<group>";
 		};
 		54713A79238EA83A00C4C3F2 /* Operators */ = {
@@ -213,7 +218,8 @@
 			children = (
 				54713A7A238EA85700C4C3F2 /* ALOperators.swift */,
 			);
-			path = Operators;
+			name = Operators;
+			path = ALVisionerKit/Operators;
 			sourceTree = "<group>";
 		};
 		54713A7C238EA85D00C4C3F2 /* Options */ = {
@@ -221,7 +227,8 @@
 			children = (
 				54713A7D238EA87200C4C3F2 /* ClusterMangerOptions.swift */,
 			);
-			path = Options;
+			name = Options;
+			path = ALVisionerKit/Options;
 			sourceTree = "<group>";
 		};
 		7536D99C382D6EF9D28D52C5E9F19BE0 /* ALVisionerKit */ = {
