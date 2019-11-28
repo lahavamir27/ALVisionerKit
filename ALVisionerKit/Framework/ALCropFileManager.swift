@@ -38,7 +38,6 @@ class ALCropFileManager {
         }catch {
             throw error
         }
-        
     }
     
     static func store<T:Codable>(_ object:T, atPath:String) {

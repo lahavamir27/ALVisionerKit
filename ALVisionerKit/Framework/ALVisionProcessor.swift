@@ -15,6 +15,7 @@ class ALVisionProcessor {
     private var imageFilter = ALImageFilter()
     private var assetsManager = ALAssetManager()
     private var imageFetcher = ALImageFetcher()
+    private var imageProcessor = ALImageProcessor()
     
     func performDetection(on: PHFetchResult<PHAsset>, jobTypes:[ALVisionProcessorType], completion:@escaping(Result<[ProcessedALAsset],ALVisionError>)-> Void) {
         let stack = assetsManager.getAssetsStacked(assets: on)
@@ -66,14 +67,14 @@ class ALVisionProcessor {
     }
     
     private func stackProcessor(processor:@escaping processor) -> stackProcessor {
-        return processor |> ALImageProcessor.createStackProcessor
+        return processor |> imageProcessor.createStackProcessor
     }
     
     private func imagesProcessor(types:[ALVisionProcessorType]) ->  processor {
         let filter = types.reduce(imageFilter.filter(type: types[0])) { (result, type) -> ALFilter in
             return add(filter: result, type: type)
         }
-        return ALImageProcessor.singleProcessProcessor(preformOn: filter)
+        return imageProcessor.singleProcessProcessor(preformOn: filter)
     }
     
     private func add(filter:@escaping ALFilter, type:ALVisionProcessorType) -> ALFilter {

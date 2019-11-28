@@ -21,7 +21,7 @@
 		54713A5B238EA78400C4C3F2 /* ALAssetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54713A53238EA78300C4C3F2 /* ALAssetManager.swift */; };
 		54713A5C238EA78400C4C3F2 /* ALImageFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54713A54238EA78400C4C3F2 /* ALImageFetcher.swift */; };
 		54713A5D238EA78400C4C3F2 /* ALImageFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54713A55238EA78400C4C3F2 /* ALImageFilter.swift */; };
-		54713A5E238EA78400C4C3F2 /* ALVisionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54713A56238EA78400C4C3F2 /* ALVisionManager.swift */; };
+		54713A5E238EA78400C4C3F2 /* ALVisionSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54713A56238EA78400C4C3F2 /* ALVisionSessionManager.swift */; };
 		54713A63238EA7A900C4C3F2 /* ALProcessAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54713A60238EA7A900C4C3F2 /* ALProcessAsset.swift */; };
 		54713A64238EA7A900C4C3F2 /* ALCustomProcessAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54713A61238EA7A900C4C3F2 /* ALCustomProcessAsset.swift */; };
 		54713A65238EA7A900C4C3F2 /* ProcessedALAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54713A62238EA7A900C4C3F2 /* ProcessedALAsset.swift */; };
@@ -81,7 +81,7 @@
 		54713A53238EA78300C4C3F2 /* ALAssetManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ALAssetManager.swift; sourceTree = "<group>"; };
 		54713A54238EA78400C4C3F2 /* ALImageFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ALImageFetcher.swift; sourceTree = "<group>"; };
 		54713A55238EA78400C4C3F2 /* ALImageFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ALImageFilter.swift; sourceTree = "<group>"; };
-		54713A56238EA78400C4C3F2 /* ALVisionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ALVisionManager.swift; sourceTree = "<group>"; };
+		54713A56238EA78400C4C3F2 /* ALVisionSessionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ALVisionSessionManager.swift; sourceTree = "<group>"; };
 		54713A60238EA7A900C4C3F2 /* ALProcessAsset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ALProcessAsset.swift; sourceTree = "<group>"; };
 		54713A61238EA7A900C4C3F2 /* ALCustomProcessAsset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ALCustomProcessAsset.swift; sourceTree = "<group>"; };
 		54713A62238EA7A900C4C3F2 /* ProcessedALAsset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProcessedALAsset.swift; sourceTree = "<group>"; };
@@ -169,7 +169,7 @@
 				54713A55238EA78400C4C3F2 /* ALImageFilter.swift */,
 				54713A51238EA78300C4C3F2 /* ALImageProcessor.swift */,
 				54713A50238EA78300C4C3F2 /* ALPhotosAuthorization.swift */,
-				54713A56238EA78400C4C3F2 /* ALVisionManager.swift */,
+				54713A56238EA78400C4C3F2 /* ALVisionSessionManager.swift */,
 				54713A52238EA78300C4C3F2 /* ALVisionProcessor.swift */,
 			);
 			name = Framework;
@@ -515,7 +515,7 @@
 				54A795A7238FFFDF0030DAE0 /* ALFetchAssetsOptions.swift in Sources */,
 				54713A58238EA78400C4C3F2 /* ALPhotosAuthorization.swift in Sources */,
 				54A795AB23900A3E0030DAE0 /* ALCropFileManagerError.swift in Sources */,
-				54713A5E238EA78400C4C3F2 /* ALVisionManager.swift in Sources */,
+				54713A5E238EA78400C4C3F2 /* ALVisionSessionManager.swift in Sources */,
 				54713A59238EA78400C4C3F2 /* ALImageProcessor.swift in Sources */,
 				54713A6D238EA7CC00C4C3F2 /* ALPhotosAuthorizationError.swift in Sources */,
 				54713A6E238EA7CC00C4C3F2 /* ALFaceClustaringError.swift in Sources */,

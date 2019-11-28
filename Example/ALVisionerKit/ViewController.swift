@@ -24,12 +24,12 @@ class ViewController: UIViewController {
                 
                 // fetch user assets from galley
                 let fetchOptions = ALFetchAssetsOptions()
-                fetchOptions.numberOfPhotos = 20
+                fetchOptions.numberOfPhotos = 100
                 let assetsManager = ALAssetManager()
                 let assets = assetsManager.getUserPhotos(with: .allAssets, fetchOptions: fetchOptions)
-                
+                let session = ALVisionSessionManager()
                 // detect objects, faces rects and face quality (0-1)
-                ALVisionManager.detect(in: assets, with: [.faceDetection,.imageQuality,.objectDetection]) { (result) in
+                session.detect(in: assets, with: [.faceDetection,.imageQuality,.objectDetection]) { (result) in
                     switch result {
                     case .success(let objs):
                         objs.printObjects()

@@ -14,12 +14,12 @@ typealias stackProcessor = (ALStack<[PHAsset]>) throws -> [ALProcessAsset]
 
 class ALImageProcessor {
     
-    private static let assetMangager = ALAssetManager()
+    private let assetMangager = ALAssetManager()
     
     /// Create opertion queue to process all assets.
     /// - Return analized objects
     /// - Parameter images: User Images
-    static func imageProcessor<T>(images:[ALProcessAsset], preformOn:@escaping (ALProcessAsset) throws -> [T]) ->  [T] {
+    func imageProcessor<T>(images:[ALProcessAsset], preformOn:@escaping (ALProcessAsset) throws -> [T]) ->  [T] {
         let queue = OperationQueue()
         var objects:[T] = []
         let blocks = images.map { (image) -> BlockOperation in
@@ -40,7 +40,7 @@ class ALImageProcessor {
     /// Create opertion queue to process all assets.
     /// - Return analized objects
     /// - Parameter images: User Images
-    static func singleImageProcessor<T>(images:[ALProcessAsset], preformOn:@escaping (ALProcessAsset) throws -> T) ->  [T] {
+    func singleImageProcessor<T>(images:[ALProcessAsset], preformOn:@escaping (ALProcessAsset) throws -> T) ->  [T] {
         let queue = OperationQueue()
         var objects:[T] = []
         let blocks = images.map { (image) -> BlockOperation in
@@ -60,7 +60,7 @@ class ALImageProcessor {
     /// Create opertion queue to process all assets.
     /// - Return analized objects
     /// - Parameter images: User Images
-    static func singleProcessProcessor(preformOn:@escaping (ALProcessAsset) throws -> ALProcessAsset) ->  processor {
+    func singleProcessProcessor(preformOn:@escaping (ALProcessAsset) throws -> ALProcessAsset) ->  processor {
         return { (assets) in
             let queue = OperationQueue()
             var objects:[ALProcessAsset] = []
@@ -80,7 +80,7 @@ class ALImageProcessor {
     }
     
     
-    static func stackProcessor<T>(_ stack:ALStack<[PHAsset]>, processor:@escaping ([ALProcessAsset]) throws -> [T]) -> [T] {
+    func stackProcessor<T>(_ stack:ALStack<[PHAsset]>, processor:@escaping ([ALProcessAsset]) throws -> [T]) -> [T] {
         var stack = stack
         var objects:[T] = []
         while !stack.isEmpty() {
@@ -97,23 +97,23 @@ class ALImageProcessor {
         return objects
     }
     
-    static func createStackProcessor(processor:@escaping processor) -> stackProcessor {
+    func createStackProcessor(processor:@escaping processor) -> stackProcessor {
         return { (stack) in
             var stack = stack
             var objects:[ALProcessAsset] = []
             while !stack.isEmpty() {
-                if let asstes = stack.pop() {
-                    do {
-                        let asssts = assetMangager.mapAssets(asstes)
-                        let detectObjects = try  asssts  |> processor 
-                        objects.append(contentsOf: detectObjects)
-                    }catch {   }
+                autoreleasepool{
+                    if let asstes = stack.pop() {
+                        do {
+                            let asssts = self.assetMangager.mapAssets(asstes)
+                            let detectObjects = try  asssts  |> processor
+                            objects.append(contentsOf: detectObjects)
+                        }catch {   }
+                    }
                 }
             }
             return objects
         }
-        
-
     }
 
 }
