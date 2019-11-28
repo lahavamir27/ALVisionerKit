@@ -13,7 +13,6 @@ class ALCropFileManager {
     static let fileManager = FileManager.default
     
     static func createNew(folder:String) throws -> URL {
-
         if let documentDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first {
             let folderURL = documentDirectory.appendingPathComponent(folder)
             if !isFileExist(atPath: folderURL.path) {
@@ -26,7 +25,7 @@ class ALCropFileManager {
             }
             return folderURL
         }
-        throw CropFileManagerError.documentDirectoryNotFound
+        throw ALCropFileManagerError.documentDirectoryNotFound
     }
     
     static func isFileExist(atPath: String) -> Bool {
@@ -42,10 +41,7 @@ class ALCropFileManager {
         
     }
     
-    
-    
     static func store<T:Codable>(_ object:T, atPath:String) {
-        
         let encoder = JSONEncoder()
         do {
             let data = try encoder.encode(object)
@@ -53,12 +49,9 @@ class ALCropFileManager {
         } catch {
             fatalError(error.localizedDescription)
         }
-        
-        
     }
     
     static func load<T:Codable>(atPath:String) -> T {
-        
         if let data = FileManager.default.contents(atPath: atPath) {
             let decoder = JSONDecoder()
             do {
@@ -71,9 +64,4 @@ class ALCropFileManager {
             fatalError("No data at \(atPath)!")
         }
     }
-}
-
-
-enum CropFileManagerError:Error {
-    case documentDirectoryNotFound
 }

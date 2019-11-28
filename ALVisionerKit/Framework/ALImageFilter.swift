@@ -37,7 +37,7 @@ class ALImageFilter {
             let request = VNDetectFaceRectanglesRequest()
             try requestHandler.perform([request])
             guard let observations = request.results as? [VNFaceObservation] else {
-                throw FaceClustaringError.facesDetcting
+                throw ALFaceClustaringError.facesDetcting
             }
 //            guard !observations.isEmpty else {
 //                throw FaceClustaringError.emptyObservation

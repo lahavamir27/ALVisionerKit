@@ -7,7 +7,7 @@
 
 import Foundation
 
-class ClusterMangerOptions {
+class ALClusterMangerOptions {
     var numberOfUserAssetsToProcess:Int = Int.max
     var chunckSize:Int = 10
     var minimumClusterSize:Int = 0

@@ -8,6 +8,7 @@
 
 import Foundation
 import Photos
+import UIKit
 
 public final class ALAssetManager {
     
@@ -19,15 +20,15 @@ public final class ALAssetManager {
         return fetchOptions
     }()
     
-    func getMyAssets(options:ClusterMangerOptions) -> ALStack<[PHAsset]> {
+    func getMyAssets(options:ALClusterMangerOptions) -> ALStack<[PHAsset]> {
         return chunk(assets: getUserAssets(), usersAssets: options.numberOfUserAssetsToProcess, chunkSize: options.chunckSize) |> stackAssets
     }
     
-    func getAssetsStacked(assets:[PHAsset], options:ClusterMangerOptions = ClusterMangerOptions()) -> ALStack<[PHAsset]> {
+    func getAssetsStacked(assets:[PHAsset], options:ALClusterMangerOptions = ALClusterMangerOptions()) -> ALStack<[PHAsset]> {
         return chunk(assets: assets, usersAssets: options.numberOfUserAssetsToProcess, chunkSize: options.chunckSize) |> stackAssets
     }
     
-    func getAssetsStacked(assets:PHFetchResult<PHAsset>, options:ClusterMangerOptions = ClusterMangerOptions()) -> ALStack<[PHAsset]> {
+    func getAssetsStacked(assets:PHFetchResult<PHAsset>, options:ALClusterMangerOptions = ALClusterMangerOptions()) -> ALStack<[PHAsset]> {
         let parseAsset = assetParser(asstes: assets)
         return chunk(assets: parseAsset, usersAssets: options.numberOfUserAssetsToProcess, chunkSize: options.chunckSize) |> stackAssets
     }
@@ -137,22 +138,6 @@ public final class ALAssetManager {
         queue.addOperations(blocks, waitUntilFinished: true)
         return preProcessPHAssets
     }
-    
-    public enum ALFetchOptions {
-        case allAssets
-        case albumName(String)
-        case assetCollection(PHAssetCollection)
-        case mediaType(PHAssetMediaType)
-        case identifiers([String])
-    }
-    
-}
-
-
-public class ALFetchAssetsOptions {
-    public var numberOfPhotos:Int = Int.max
-    public var dateAscending:Bool = false
-    public init() {}
 }
 
 

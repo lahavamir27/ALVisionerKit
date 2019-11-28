@@ -7,12 +7,11 @@
 
 import Foundation
 
-enum FaceClustaringError:Error {
+enum ALFaceClustaringError:Error {
     case fetchImages
     case facesDetcting
     case cgImageNotFound
     case emptyObservation
-    
     var description:String {
         switch self {
         case .fetchImages:

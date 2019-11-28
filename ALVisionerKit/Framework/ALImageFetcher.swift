@@ -27,7 +27,7 @@ class ALImageFetcher {
                 let semaphore = DispatchSemaphore(value: 0)
                 
                 imgManager.requestImageDataAndOrientation(for: asset, options: rquestOptions) { (data, str, ori, _) in
-                        myImage = data?.downSmaple(to: CGSize(width: 500, height: 500), scale: UIScreen.main.scale)
+                        myImage = data?.downSmaple(to: CGSize(width: 400, height: 400), scale: UIScreen.main.scale)
                         semaphore.signal()
                 }
                 _ = semaphore.wait(wallTimeout: .distantFuture)

@@ -28,13 +28,16 @@
 		54713A6B238EA7CC00C4C3F2 /* ALVisionProcessorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54713A67238EA7CB00C4C3F2 /* ALVisionProcessorType.swift */; };
 		54713A6C238EA7CC00C4C3F2 /* ALVisionError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54713A68238EA7CB00C4C3F2 /* ALVisionError.swift */; };
 		54713A6D238EA7CC00C4C3F2 /* ALPhotosAuthorizationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54713A69238EA7CC00C4C3F2 /* ALPhotosAuthorizationError.swift */; };
-		54713A6E238EA7CC00C4C3F2 /* FaceClustaringError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54713A6A238EA7CC00C4C3F2 /* FaceClustaringError.swift */; };
+		54713A6E238EA7CC00C4C3F2 /* ALFaceClustaringError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54713A6A238EA7CC00C4C3F2 /* ALFaceClustaringError.swift */; };
 		54713A73238EA7EB00C4C3F2 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54713A70238EA7EB00C4C3F2 /* Data.swift */; };
 		54713A74238EA7EB00C4C3F2 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54713A71238EA7EB00C4C3F2 /* Array.swift */; };
 		54713A75238EA7EB00C4C3F2 /* scaling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54713A72238EA7EB00C4C3F2 /* scaling.swift */; };
 		54713A78238EA82C00C4C3F2 /* ALStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54713A77238EA82C00C4C3F2 /* ALStack.swift */; };
 		54713A7B238EA85700C4C3F2 /* ALOperators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54713A7A238EA85700C4C3F2 /* ALOperators.swift */; };
-		54713A7E238EA87200C4C3F2 /* ClusterMangerOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54713A7D238EA87200C4C3F2 /* ClusterMangerOptions.swift */; };
+		54713A7E238EA87200C4C3F2 /* ALClusterMangerOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54713A7D238EA87200C4C3F2 /* ALClusterMangerOptions.swift */; };
+		54A795A7238FFFDF0030DAE0 /* ALFetchAssetsOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54A795A6238FFFDF0030DAE0 /* ALFetchAssetsOptions.swift */; };
+		54A795A9239000820030DAE0 /* ALFetchOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54A795A8239000820030DAE0 /* ALFetchOptions.swift */; };
+		54A795AB23900A3E0030DAE0 /* ALCropFileManagerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54A795AA23900A3E0030DAE0 /* ALCropFileManagerError.swift */; };
 		59EBBF720AA6BB7FDCF1A6524A4BAB12 /* ReplaceMe.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B13894D78A4F58E704C62ADD79579D /* ReplaceMe.swift */; };
 		767BF5E79C1AAA57F780BDEE457298A4 /* Pods-ALVisionerKit_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F2189B2CEA404B807F0F312EF450A0A /* Pods-ALVisionerKit_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9B987EB2B4EC98A15556D776D186E744 /* Pods-ALVisionerKit_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D515F823A2216E924C71202BC48A981 /* Pods-ALVisionerKit_Tests-dummy.m */; };
@@ -85,13 +88,16 @@
 		54713A67238EA7CB00C4C3F2 /* ALVisionProcessorType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ALVisionProcessorType.swift; sourceTree = "<group>"; };
 		54713A68238EA7CB00C4C3F2 /* ALVisionError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ALVisionError.swift; sourceTree = "<group>"; };
 		54713A69238EA7CC00C4C3F2 /* ALPhotosAuthorizationError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ALPhotosAuthorizationError.swift; sourceTree = "<group>"; };
-		54713A6A238EA7CC00C4C3F2 /* FaceClustaringError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaceClustaringError.swift; sourceTree = "<group>"; };
+		54713A6A238EA7CC00C4C3F2 /* ALFaceClustaringError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ALFaceClustaringError.swift; sourceTree = "<group>"; };
 		54713A70238EA7EB00C4C3F2 /* Data.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		54713A71238EA7EB00C4C3F2 /* Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		54713A72238EA7EB00C4C3F2 /* scaling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = scaling.swift; sourceTree = "<group>"; };
 		54713A77238EA82C00C4C3F2 /* ALStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ALStack.swift; sourceTree = "<group>"; };
 		54713A7A238EA85700C4C3F2 /* ALOperators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ALOperators.swift; sourceTree = "<group>"; };
-		54713A7D238EA87200C4C3F2 /* ClusterMangerOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClusterMangerOptions.swift; sourceTree = "<group>"; };
+		54713A7D238EA87200C4C3F2 /* ALClusterMangerOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ALClusterMangerOptions.swift; sourceTree = "<group>"; };
+		54A795A6238FFFDF0030DAE0 /* ALFetchAssetsOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ALFetchAssetsOptions.swift; sourceTree = "<group>"; };
+		54A795A8239000820030DAE0 /* ALFetchOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ALFetchOptions.swift; sourceTree = "<group>"; };
+		54A795AA23900A3E0030DAE0 /* ALCropFileManagerError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ALCropFileManagerError.swift; sourceTree = "<group>"; };
 		5A65348B1803F3CA95B775E47DDF8384 /* Pods-ALVisionerKit_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-ALVisionerKit_Example-umbrella.h"; sourceTree = "<group>"; };
 		64B43FCEF2663DF22D3C9B61909FB478 /* Pods_ALVisionerKit_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ALVisionerKit_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BA25A475E348B3197554DEC4B5254E5 /* Pods-ALVisionerKit_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ALVisionerKit_Example-frameworks.sh"; sourceTree = "<group>"; };
@@ -187,7 +193,9 @@
 				54713A69238EA7CC00C4C3F2 /* ALPhotosAuthorizationError.swift */,
 				54713A68238EA7CB00C4C3F2 /* ALVisionError.swift */,
 				54713A67238EA7CB00C4C3F2 /* ALVisionProcessorType.swift */,
-				54713A6A238EA7CC00C4C3F2 /* FaceClustaringError.swift */,
+				54713A6A238EA7CC00C4C3F2 /* ALFaceClustaringError.swift */,
+				54A795AA23900A3E0030DAE0 /* ALCropFileManagerError.swift */,
+				54A795A8239000820030DAE0 /* ALFetchOptions.swift */,
 			);
 			name = Enum;
 			path = ALVisionerKit/Enum;
@@ -225,7 +233,8 @@
 		54713A7C238EA85D00C4C3F2 /* Options */ = {
 			isa = PBXGroup;
 			children = (
-				54713A7D238EA87200C4C3F2 /* ClusterMangerOptions.swift */,
+				54713A7D238EA87200C4C3F2 /* ALClusterMangerOptions.swift */,
+				54A795A6238FFFDF0030DAE0 /* ALFetchAssetsOptions.swift */,
 			);
 			name = Options;
 			path = ALVisionerKit/Options;
@@ -503,11 +512,13 @@
 				54713A5D238EA78400C4C3F2 /* ALImageFilter.swift in Sources */,
 				54713A78238EA82C00C4C3F2 /* ALStack.swift in Sources */,
 				54713A74238EA7EB00C4C3F2 /* Array.swift in Sources */,
+				54A795A7238FFFDF0030DAE0 /* ALFetchAssetsOptions.swift in Sources */,
 				54713A58238EA78400C4C3F2 /* ALPhotosAuthorization.swift in Sources */,
+				54A795AB23900A3E0030DAE0 /* ALCropFileManagerError.swift in Sources */,
 				54713A5E238EA78400C4C3F2 /* ALVisionManager.swift in Sources */,
 				54713A59238EA78400C4C3F2 /* ALImageProcessor.swift in Sources */,
 				54713A6D238EA7CC00C4C3F2 /* ALPhotosAuthorizationError.swift in Sources */,
-				54713A6E238EA7CC00C4C3F2 /* FaceClustaringError.swift in Sources */,
+				54713A6E238EA7CC00C4C3F2 /* ALFaceClustaringError.swift in Sources */,
 				54713A64238EA7A900C4C3F2 /* ALCustomProcessAsset.swift in Sources */,
 				54713A7B238EA85700C4C3F2 /* ALOperators.swift in Sources */,
 				54713A75238EA7EB00C4C3F2 /* scaling.swift in Sources */,
@@ -518,9 +529,10 @@
 				54713A65238EA7A900C4C3F2 /* ProcessedALAsset.swift in Sources */,
 				54713A5A238EA78400C4C3F2 /* ALVisionProcessor.swift in Sources */,
 				54713A6B238EA7CC00C4C3F2 /* ALVisionProcessorType.swift in Sources */,
+				54A795A9239000820030DAE0 /* ALFetchOptions.swift in Sources */,
 				54713A6C238EA7CC00C4C3F2 /* ALVisionError.swift in Sources */,
 				54713A73238EA7EB00C4C3F2 /* Data.swift in Sources */,
-				54713A7E238EA87200C4C3F2 /* ClusterMangerOptions.swift in Sources */,
+				54713A7E238EA87200C4C3F2 /* ALClusterMangerOptions.swift in Sources */,
 				54713A5B238EA78400C4C3F2 /* ALAssetManager.swift in Sources */,
 				54713A63238EA7A900C4C3F2 /* ALProcessAsset.swift in Sources */,
 			);

@@ -15,6 +15,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Ask user permission
         ALPhotosAuthorization.checkPhotoLibraryPermission { (result) in
             switch result {
             case .success(_):
@@ -38,7 +40,6 @@ class ViewController: UIViewController {
                 }
             case .failure(_): break
                 // User denied Permission
-                
             }
         }
         // Do any additional setup after loading the view, typically from a nib.
