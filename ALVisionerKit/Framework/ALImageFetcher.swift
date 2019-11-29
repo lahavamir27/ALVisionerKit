@@ -9,7 +9,7 @@
 import Foundation
 import Photos
 
-class ALImageFetcher {
+final class ALImageFetcher {
     
     private let imgManager = PHImageManager.default()
     

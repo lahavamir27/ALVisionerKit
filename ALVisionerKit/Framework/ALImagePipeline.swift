@@ -10,10 +10,10 @@ import Foundation
 import Vision
 import CoreML
 
-
 typealias ALPipeline = (ALProcessAsset) throws -> ALProcessAsset
 typealias ALCustomFilter<T> = (ALCustomProcessAsset) throws -> T
-class ALImagePipeline {
+
+final class ALImagePipeline {
     
     let faceRequest = VNDetectFaceRectanglesRequest()
     let imageQualityRequest = VNDetectFaceCaptureQualityRequest()

@@ -10,7 +10,7 @@ import Foundation
 import Photos
 import CoreML
 
-class ALVisionProcessor {
+final class ALVisionProcessor {
     
     private var imageFilter = ALImagePipeline()
     private var assetsManager = ALAssetManager()
@@ -86,12 +86,3 @@ class ALVisionProcessor {
     }
 }
 
-extension PHFetchResult where ObjectType == PHAsset {
-    var objects: [ObjectType] {
-        var _objects: [ObjectType] = []
-        enumerateObjects { (object, _, _) in
-            _objects.append(object)
-        }
-        return _objects
-    }
-} 

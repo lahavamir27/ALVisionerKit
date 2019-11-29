@@ -12,7 +12,7 @@ import Photos
 typealias ALMultiPipelineProcessor = ([ALProcessAsset]) throws -> [ALProcessedAsset]
 typealias ALStackProcessor = (ALStack<[PHAsset]>) throws -> [ALProcessedAsset]
 
-class ALImageProcessor {
+final class ALImageProcessor {
     
     private let assetMangager = ALAssetManager()
     

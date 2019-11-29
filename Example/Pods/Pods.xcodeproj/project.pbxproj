@@ -38,6 +38,7 @@
 		54A795A7238FFFDF0030DAE0 /* ALFetchAssetsOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54A795A6238FFFDF0030DAE0 /* ALFetchAssetsOptions.swift */; };
 		54A795A9239000820030DAE0 /* ALFetchOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54A795A8239000820030DAE0 /* ALFetchOptions.swift */; };
 		54A795AB23900A3E0030DAE0 /* ALCropFileManagerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54A795AA23900A3E0030DAE0 /* ALCropFileManagerError.swift */; };
+		54F2BAA02391B4BB0044A09A /* PHFetchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F2BA9F2391B4BB0044A09A /* PHFetchResult.swift */; };
 		59EBBF720AA6BB7FDCF1A6524A4BAB12 /* ReplaceMe.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B13894D78A4F58E704C62ADD79579D /* ReplaceMe.swift */; };
 		767BF5E79C1AAA57F780BDEE457298A4 /* Pods-ALVisionerKit_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F2189B2CEA404B807F0F312EF450A0A /* Pods-ALVisionerKit_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9B987EB2B4EC98A15556D776D186E744 /* Pods-ALVisionerKit_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D515F823A2216E924C71202BC48A981 /* Pods-ALVisionerKit_Tests-dummy.m */; };
@@ -98,6 +99,7 @@
 		54A795A6238FFFDF0030DAE0 /* ALFetchAssetsOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ALFetchAssetsOptions.swift; sourceTree = "<group>"; };
 		54A795A8239000820030DAE0 /* ALFetchOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ALFetchOptions.swift; sourceTree = "<group>"; };
 		54A795AA23900A3E0030DAE0 /* ALCropFileManagerError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ALCropFileManagerError.swift; sourceTree = "<group>"; };
+		54F2BA9F2391B4BB0044A09A /* PHFetchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PHFetchResult.swift; sourceTree = "<group>"; };
 		5A65348B1803F3CA95B775E47DDF8384 /* Pods-ALVisionerKit_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-ALVisionerKit_Example-umbrella.h"; sourceTree = "<group>"; };
 		64B43FCEF2663DF22D3C9B61909FB478 /* Pods_ALVisionerKit_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ALVisionerKit_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BA25A475E348B3197554DEC4B5254E5 /* Pods-ALVisionerKit_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ALVisionerKit_Example-frameworks.sh"; sourceTree = "<group>"; };
@@ -205,6 +207,7 @@
 			isa = PBXGroup;
 			children = (
 				54713A71238EA7EB00C4C3F2 /* Array.swift */,
+				54F2BA9F2391B4BB0044A09A /* PHFetchResult.swift */,
 				54713A70238EA7EB00C4C3F2 /* Data.swift */,
 				54713A72238EA7EB00C4C3F2 /* scaling.swift */,
 			);
@@ -525,6 +528,7 @@
 				1C2F8312678867204D9F6B9B2242616F /* ALVisionerKit-dummy.m in Sources */,
 				54713A5C238EA78400C4C3F2 /* ALImageFetcher.swift in Sources */,
 				54713A57238EA78400C4C3F2 /* ALCropFileManager.swift in Sources */,
+				54F2BAA02391B4BB0044A09A /* PHFetchResult.swift in Sources */,
 				59EBBF720AA6BB7FDCF1A6524A4BAB12 /* ReplaceMe.swift in Sources */,
 				54713A65238EA7A900C4C3F2 /* ALProcessedAsset.swift in Sources */,
 				54713A5A238EA78400C4C3F2 /* ALVisionProcessor.swift in Sources */,

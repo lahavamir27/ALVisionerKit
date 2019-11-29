@@ -8,7 +8,7 @@
 
 import Foundation
 
-class ALCropFileManager {
+final class ALCropFileManager {
     
     static let fileManager = FileManager.default
     

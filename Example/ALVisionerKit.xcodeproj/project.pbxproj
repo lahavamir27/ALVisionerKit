@@ -223,10 +223,12 @@
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = 75F94K2BEH;
 						LastSwiftMigration = 1120;
 					};
 					607FACE41AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = 75F94K2BEH;
 						LastSwiftMigration = 1120;
 						TestTargetID = 607FACCF1AFB9204008FA782;
 					};
@@ -495,6 +497,7 @@
 			baseConfigurationReference = 0671398C442F5DCAFB58C470 /* Pods-ALVisionerKit_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 75F94K2BEH;
 				INFOPLIST_FILE = ALVisionerKit/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -511,6 +514,7 @@
 			baseConfigurationReference = 0C73CAE62D017E327405D07E /* Pods-ALVisionerKit_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 75F94K2BEH;
 				INFOPLIST_FILE = ALVisionerKit/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -526,6 +530,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = FE22679C477D84731A96A0DE /* Pods-ALVisionerKit_Tests.debug.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = 75F94K2BEH;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -548,6 +553,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C4C34E5ED18AA3E75F967EA0 /* Pods-ALVisionerKit_Tests.release.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = 75F94K2BEH;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
 					"$(inherited)",
