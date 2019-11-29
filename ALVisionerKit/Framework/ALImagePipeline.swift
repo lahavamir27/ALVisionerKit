@@ -1,6 +1,6 @@
 //
 //  ImageAnalyzer.swift
-//  ALFacerKit
+//  ALVisionerKit
 //
 //  Created by amir.lahav on 10/11/2019.
 //  Copyright © 2019 la-labs. All rights reserved.
