@@ -24,15 +24,17 @@ class ViewController: UIViewController {
                 
                 // fetch user assets from galley
                 let fetchOptions = ALFetchAssetsOptions()
-                fetchOptions.numberOfPhotos = 100
+                fetchOptions.numberOfPhotos = 500
                 let assetsManager = ALAssetManager()
                 let assets = assetsManager.getUserPhotos(with: .allAssets, fetchOptions: fetchOptions)
                 let session = ALVisionSessionManager()
                 // detect objects, faces rects and face quality (0-1)
-                session.detect(in: assets, with: [.faceDetection,.imageQuality,.objectDetection]) { (result) in
+                let startDate = Date()
+                session.detect(in: assets, with: [.faceCaptureQuality, .objectDetection]) { (result) in
                     switch result {
                     case .success(let objs):
                         objs.printObjects()
+                        print("finish round in: \(startDate.timeIntervalSinceNow * -1) sconed")
                         // do something with deteted assets
                         break
                     case .failure(_):break

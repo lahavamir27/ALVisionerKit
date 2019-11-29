@@ -9,8 +9,8 @@
 import Foundation
 import Photos
 
-typealias processor = ([ALProcessAsset]) throws -> [ALProcessAsset]
-typealias stackProcessor = (ALStack<[PHAsset]>) throws -> [ALProcessAsset]
+typealias ALMultiPipelineProcessor = ([ALProcessAsset]) throws -> [ALProcessedAsset]
+typealias ALStackProcessor = (ALStack<[PHAsset]>) throws -> [ALProcessedAsset]
 
 class ALImageProcessor {
     
@@ -60,10 +60,10 @@ class ALImageProcessor {
     /// Create opertion queue to process all assets.
     /// - Return analized objects
     /// - Parameter images: User Images
-    func singleProcessProcessor(preformOn:@escaping (ALProcessAsset) throws -> ALProcessAsset) ->  processor {
+    func singleProcessProcessor(preformOn:@escaping (ALProcessAsset) throws -> ALProcessedAsset) ->  ALMultiPipelineProcessor {
         return { (assets) in
             let queue = OperationQueue()
-            var objects:[ALProcessAsset] = []
+            var objects:[ALProcessedAsset] = []
             let blocks = assets.map { (image) -> BlockOperation in
                 return BlockOperation {
                     do {
@@ -97,20 +97,22 @@ class ALImageProcessor {
         return objects
     }
     
-    func createStackProcessor(processor:@escaping processor) -> stackProcessor {
+    func createStackProcessor(processor:@escaping ALMultiPipelineProcessor) -> ALStackProcessor {
         return { (stack) in
             var stack = stack
-            var objects:[ALProcessAsset] = []
-            while !stack.isEmpty() {
+            var objects:[ALProcessedAsset] = []
+            while !stack.isEmpty() && objects.count < 100 {
+                let startDate = Date()
                 autoreleasepool{
                     if let asstes = stack.pop() {
                         do {
                             let asssts = self.assetMangager.mapAssets(asstes)
-                            let detectObjects = try  asssts  |> processor
+                            let detectObjects = try  asssts |> processor
                             objects.append(contentsOf: detectObjects)
                         }catch {   }
                     }
                 }
+                print("finish batch process in: \(startDate.timeIntervalSinceNow * -1) sconed")
             }
             return objects
         }

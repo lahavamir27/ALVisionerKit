@@ -20,11 +20,11 @@
 		54713A5A238EA78400C4C3F2 /* ALVisionProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54713A52238EA78300C4C3F2 /* ALVisionProcessor.swift */; };
 		54713A5B238EA78400C4C3F2 /* ALAssetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54713A53238EA78300C4C3F2 /* ALAssetManager.swift */; };
 		54713A5C238EA78400C4C3F2 /* ALImageFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54713A54238EA78400C4C3F2 /* ALImageFetcher.swift */; };
-		54713A5D238EA78400C4C3F2 /* ALImageFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54713A55238EA78400C4C3F2 /* ALImageFilter.swift */; };
+		54713A5D238EA78400C4C3F2 /* ALImagePipeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54713A55238EA78400C4C3F2 /* ALImagePipeline.swift */; };
 		54713A5E238EA78400C4C3F2 /* ALVisionSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54713A56238EA78400C4C3F2 /* ALVisionSessionManager.swift */; };
 		54713A63238EA7A900C4C3F2 /* ALProcessAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54713A60238EA7A900C4C3F2 /* ALProcessAsset.swift */; };
 		54713A64238EA7A900C4C3F2 /* ALCustomProcessAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54713A61238EA7A900C4C3F2 /* ALCustomProcessAsset.swift */; };
-		54713A65238EA7A900C4C3F2 /* ProcessedALAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54713A62238EA7A900C4C3F2 /* ProcessedALAsset.swift */; };
+		54713A65238EA7A900C4C3F2 /* ALProcessedAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54713A62238EA7A900C4C3F2 /* ALProcessedAsset.swift */; };
 		54713A6B238EA7CC00C4C3F2 /* ALVisionProcessorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54713A67238EA7CB00C4C3F2 /* ALVisionProcessorType.swift */; };
 		54713A6C238EA7CC00C4C3F2 /* ALVisionError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54713A68238EA7CB00C4C3F2 /* ALVisionError.swift */; };
 		54713A6D238EA7CC00C4C3F2 /* ALPhotosAuthorizationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54713A69238EA7CC00C4C3F2 /* ALPhotosAuthorizationError.swift */; };
@@ -80,11 +80,11 @@
 		54713A52238EA78300C4C3F2 /* ALVisionProcessor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ALVisionProcessor.swift; sourceTree = "<group>"; };
 		54713A53238EA78300C4C3F2 /* ALAssetManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ALAssetManager.swift; sourceTree = "<group>"; };
 		54713A54238EA78400C4C3F2 /* ALImageFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ALImageFetcher.swift; sourceTree = "<group>"; };
-		54713A55238EA78400C4C3F2 /* ALImageFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ALImageFilter.swift; sourceTree = "<group>"; };
+		54713A55238EA78400C4C3F2 /* ALImagePipeline.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ALImagePipeline.swift; sourceTree = "<group>"; };
 		54713A56238EA78400C4C3F2 /* ALVisionSessionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ALVisionSessionManager.swift; sourceTree = "<group>"; };
 		54713A60238EA7A900C4C3F2 /* ALProcessAsset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ALProcessAsset.swift; sourceTree = "<group>"; };
 		54713A61238EA7A900C4C3F2 /* ALCustomProcessAsset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ALCustomProcessAsset.swift; sourceTree = "<group>"; };
-		54713A62238EA7A900C4C3F2 /* ProcessedALAsset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProcessedALAsset.swift; sourceTree = "<group>"; };
+		54713A62238EA7A900C4C3F2 /* ALProcessedAsset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ALProcessedAsset.swift; sourceTree = "<group>"; };
 		54713A67238EA7CB00C4C3F2 /* ALVisionProcessorType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ALVisionProcessorType.swift; sourceTree = "<group>"; };
 		54713A68238EA7CB00C4C3F2 /* ALVisionError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ALVisionError.swift; sourceTree = "<group>"; };
 		54713A69238EA7CC00C4C3F2 /* ALPhotosAuthorizationError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ALPhotosAuthorizationError.swift; sourceTree = "<group>"; };
@@ -166,7 +166,7 @@
 				54713A53238EA78300C4C3F2 /* ALAssetManager.swift */,
 				54713A4F238EA78300C4C3F2 /* ALCropFileManager.swift */,
 				54713A54238EA78400C4C3F2 /* ALImageFetcher.swift */,
-				54713A55238EA78400C4C3F2 /* ALImageFilter.swift */,
+				54713A55238EA78400C4C3F2 /* ALImagePipeline.swift */,
 				54713A51238EA78300C4C3F2 /* ALImageProcessor.swift */,
 				54713A50238EA78300C4C3F2 /* ALPhotosAuthorization.swift */,
 				54713A56238EA78400C4C3F2 /* ALVisionSessionManager.swift */,
@@ -181,7 +181,7 @@
 			children = (
 				54713A61238EA7A900C4C3F2 /* ALCustomProcessAsset.swift */,
 				54713A60238EA7A900C4C3F2 /* ALProcessAsset.swift */,
-				54713A62238EA7A900C4C3F2 /* ProcessedALAsset.swift */,
+				54713A62238EA7A900C4C3F2 /* ALProcessedAsset.swift */,
 			);
 			name = Data;
 			path = ALVisionerKit/Data;
@@ -509,7 +509,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				54713A5D238EA78400C4C3F2 /* ALImageFilter.swift in Sources */,
+				54713A5D238EA78400C4C3F2 /* ALImagePipeline.swift in Sources */,
 				54713A78238EA82C00C4C3F2 /* ALStack.swift in Sources */,
 				54713A74238EA7EB00C4C3F2 /* Array.swift in Sources */,
 				54A795A7238FFFDF0030DAE0 /* ALFetchAssetsOptions.swift in Sources */,
@@ -526,7 +526,7 @@
 				54713A5C238EA78400C4C3F2 /* ALImageFetcher.swift in Sources */,
 				54713A57238EA78400C4C3F2 /* ALCropFileManager.swift in Sources */,
 				59EBBF720AA6BB7FDCF1A6524A4BAB12 /* ReplaceMe.swift in Sources */,
-				54713A65238EA7A900C4C3F2 /* ProcessedALAsset.swift in Sources */,
+				54713A65238EA7A900C4C3F2 /* ALProcessedAsset.swift in Sources */,
 				54713A5A238EA78400C4C3F2 /* ALVisionProcessor.swift in Sources */,
 				54713A6B238EA7CC00C4C3F2 /* ALVisionProcessorType.swift in Sources */,
 				54A795A9239000820030DAE0 /* ALFetchOptions.swift in Sources */,
@@ -577,12 +577,13 @@
 			baseConfigurationReference = F9A5922C330103C4917B95EFF357F85C /* Pods-ALVisionerKit_Tests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -610,12 +611,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C48FB3B1B51668ECBFC58702F5D554BE /* ALVisionerKit.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -800,12 +802,13 @@
 			baseConfigurationReference = 21FFC29E5B184362E619A9FD1BB7E18E /* Pods-ALVisionerKit_Tests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -832,12 +835,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C48FB3B1B51668ECBFC58702F5D554BE /* ALVisionerKit.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";

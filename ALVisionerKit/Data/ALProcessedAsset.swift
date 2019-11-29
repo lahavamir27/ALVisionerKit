@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct ProcessedALAsset {
+public struct ALProcessedAsset {
     let localIdentifier:String
     let imageQuality:Float
     let categories:[String]

@@ -17,15 +17,21 @@ public final class ALVisionSessionManager {
     //MARK: Public API
     public init() {}
     
-    public func detect(in assets:PHFetchResult<PHAsset>, with jobTypes:[ALVisionProcessorType], completion:@escaping(Result<[ProcessedALAsset],ALVisionError>)-> Void) {
-        processor.performDetection(on: assets, jobTypes: jobTypes, completion: completion)
+    public func detect(in assets:PHFetchResult<PHAsset>, with jobTypes:[ALVisionProcessorType], completion:@escaping(Result<[ALProcessedAsset],ALVisionError>)-> Void) {
+        DispatchQueue.global().async {
+            self.processor.performDetection(on: assets, jobTypes: jobTypes, completion: completion)
+        }
     }
     
-    public func detect(in assets:[PHAsset], with jobTypes:[ALVisionProcessorType], completion:@escaping(Result<[ProcessedALAsset],ALVisionError>)-> Void) {
-         processor.performDetection(on: assets, jobTypes: jobTypes, completion: completion)
+    public func detect(in assets:[PHAsset], with jobTypes:[ALVisionProcessorType], completion:@escaping(Result<[ALProcessedAsset],ALVisionError>)-> Void) {
+        DispatchQueue.global().async {
+            self.processor.performDetection(on: assets, jobTypes: jobTypes, completion: completion)
+        }
      }
     
     public func detect<T>(in assets:UIImage, model:MLModel, returnType:T.Type, completion:@escaping (Result<T,ALVisionError>)-> Void) {
-        processor.perform(image: assets, model: model, completion: completion)
+        DispatchQueue.global().async {
+            self.processor.perform(image: assets, model: model, completion: completion)
+        }
     }
 }

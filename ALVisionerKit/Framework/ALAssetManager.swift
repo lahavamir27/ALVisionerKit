@@ -124,7 +124,6 @@ public final class ALAssetManager {
     
     func mapAssets(_ assets:[PHAsset]) -> [ALProcessAsset] {
         let queue = OperationQueue()
-        queue.maxConcurrentOperationCount = 10
         var preProcessPHAssets:[ALProcessAsset] = []
         let blocks = assets.map { (asset) in
             return BlockOperation {

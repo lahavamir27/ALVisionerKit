@@ -12,25 +12,24 @@ import CoreML
 
 class ALVisionProcessor {
     
-    private var imageFilter = ALImageFilter()
+    private var imageFilter = ALImagePipeline()
     private var assetsManager = ALAssetManager()
     private var imageFetcher = ALImageFetcher()
     private var imageProcessor = ALImageProcessor()
     
-    func performDetection(on: PHFetchResult<PHAsset>, jobTypes:[ALVisionProcessorType], completion:@escaping(Result<[ProcessedALAsset],ALVisionError>)-> Void) {
+    func performDetection(on: PHFetchResult<PHAsset>, jobTypes:[ALVisionProcessorType], completion:@escaping(Result<[ALProcessedAsset],ALVisionError>)-> Void) {
         let stack = assetsManager.getAssetsStacked(assets: on)
         handleStack(stack:stack, jobTypes:jobTypes, completion:completion)
     }
     
-    func performDetection(on: [PHAsset], jobTypes:[ALVisionProcessorType], completion:@escaping (Result<[ProcessedALAsset],ALVisionError>)-> Void) {
+    func performDetection(on: [PHAsset], jobTypes:[ALVisionProcessorType], completion:@escaping (Result<[ALProcessedAsset],ALVisionError>)-> Void) {
         let stack = assetsManager.getAssetsStacked(assets: on)
         handleStack(stack:stack, jobTypes:jobTypes, completion:completion)
     }
     
-    private func handleStack(stack:ALStack<[PHAsset]>, jobTypes:[ALVisionProcessorType], completion: @escaping (Result<[ProcessedALAsset],ALVisionError>)-> Void) {
-        DispatchQueue.global().async {
+    private func handleStack(stack:ALStack<[PHAsset]>, jobTypes:[ALVisionProcessorType], completion: @escaping (Result<[ALProcessedAsset],ALVisionError>)-> Void) {
             do {
-                let objects = try self.detect(stack: stack, jobTypes: jobTypes) |> self.mapDetectedObjects
+                let objects = try detect(stack: stack, jobTypes: jobTypes)
                 DispatchQueue.main.async {
                     completion(.success(objects))
                 }
@@ -39,7 +38,6 @@ class ALVisionProcessor {
                     completion(.failure(.myError(error)))
                 }
             }
-        }
     }
     
     func perform<T>(image: UIImage, model:MLModel, completion: @escaping (Result<T,ALVisionError>)-> Void) {
@@ -53,32 +51,38 @@ class ALVisionProcessor {
         }
     }
     
-    private func mapDetectedObjects(objects:[ALProcessAsset]) -> [ProcessedALAsset] {
-        return objects.map (ProcessedALAsset.init)
+    private func mapDetectedObjects(objects:[ALProcessAsset]) -> [ALProcessedAsset] {
+        return objects.map (ALProcessedAsset.init)
     }
     
-    private func detect(stack:ALStack<[PHAsset]>, jobTypes:[ALVisionProcessorType]) throws ->  [ALProcessAsset] {
+    private func mapDetectedObject(object:ALProcessAsset) -> ALProcessedAsset {
+        ALProcessedAsset.init(asset: object)
+    }
+    
+    
+    private func detect(stack:ALStack<[PHAsset]>, jobTypes:[ALVisionProcessorType]) throws ->  [ALProcessedAsset] {
         if jobTypes.isEmpty { fatalError("jobs cannot be empty") }
         return try stack |> fullPipeProcess(jobTypes: jobTypes)
     }
     
-    private func fullPipeProcess(jobTypes:[ALVisionProcessorType]) -> (ALStack<[PHAsset]>) throws -> [ALProcessAsset] {
+    private func fullPipeProcess(jobTypes:[ALVisionProcessorType]) -> (ALStack<[PHAsset]>) throws -> [ALProcessedAsset] {
         return imagesProcessor(types: jobTypes) |> stackProcessor
     }
     
-    private func stackProcessor(processor:@escaping processor) -> stackProcessor {
+    private func stackProcessor(processor:@escaping ALMultiPipelineProcessor) -> ALStackProcessor {
         return processor |> imageProcessor.createStackProcessor
     }
     
-    private func imagesProcessor(types:[ALVisionProcessorType]) ->  processor {
-        let filter = types.reduce(imageFilter.filter(type: types[0])) { (result, type) -> ALFilter in
+    private func imagesProcessor(types:[ALVisionProcessorType]) ->  ALMultiPipelineProcessor {
+        let filter = types.reduce(imageFilter.pipeline(for: types[0])) { (result, type) -> ALPipeline in
             return add(filter: result, type: type)
         }
-        return imageProcessor.singleProcessProcessor(preformOn: filter)
+        let mappedFillter = filter |>> mapDetectedObject
+        return imageProcessor.singleProcessProcessor(preformOn: mappedFillter)
     }
     
-    private func add(filter:@escaping ALFilter, type:ALVisionProcessorType) -> ALFilter {
-        return filter |>> imageFilter.filter(type: type)
+    private func add(filter:@escaping ALPipeline, type:ALVisionProcessorType) -> ALPipeline {
+        return filter |>> imageFilter.pipeline(for: type)
     }
 }
 

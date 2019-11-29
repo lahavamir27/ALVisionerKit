@@ -17,7 +17,7 @@ extension Array {
     }
 }
 
-public extension Array where Element == ProcessedALAsset {
+public extension Array where Element == ALProcessedAsset {
     func printObjects() {
         print("\n*************************************************************")
         print("detect \(self.count) photos \n")

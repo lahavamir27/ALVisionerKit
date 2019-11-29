@@ -11,17 +11,21 @@ import Vision
 import CoreML
 
 
-typealias ALFilter = (ALProcessAsset) throws -> ALProcessAsset
+typealias ALPipeline = (ALProcessAsset) throws -> ALProcessAsset
 typealias ALCustomFilter<T> = (ALCustomProcessAsset) throws -> T
-class ALImageFilter {
+class ALImagePipeline {
     
-    func filter(type:ALVisionProcessorType) -> ALFilter {
+    let faceRequest = VNDetectFaceRectanglesRequest()
+    let imageQualityRequest = VNDetectFaceCaptureQualityRequest()
+    let tagPhotosRequest = VNClassifyImageRequest()
+
+    func pipeline(for type:ALVisionProcessorType) -> ALPipeline {
         switch type {
         case .faceDetection:
             return detectFaces
         case .objectDetection:
             return tagPhoto
-        case .imageQuality:
+        case .faceCaptureQuality:
             return imageQuality
         }
     }
@@ -34,9 +38,8 @@ class ALImageFilter {
     private func detectFaces(asset:ALProcessAsset) throws -> ALProcessAsset {
         return try autoreleasepool { () -> ALProcessAsset in
             let requestHandler = VNImageRequestHandler(cgImage: (asset.image.cgImage!), options: [:])
-            let request = VNDetectFaceRectanglesRequest()
-            try requestHandler.perform([request])
-            guard let observations = request.results as? [VNFaceObservation] else {
+            try requestHandler.perform([faceRequest])
+            guard let observations = faceRequest.results as? [VNFaceObservation] else {
                 throw ALFaceClustaringError.facesDetcting
             }
 //            guard !observations.isEmpty else {
@@ -50,23 +53,21 @@ class ALImageFilter {
     private func imageQuality(asset:ALProcessAsset) throws -> ALProcessAsset {
         return try autoreleasepool { () -> ALProcessAsset in
             let requestHandler = VNImageRequestHandler(cgImage: (asset.image.cgImage!), options: [:])
-            let request = VNDetectFaceCaptureQualityRequest()
-            try requestHandler.perform([request])
-//            guard let observation = request.results?.first as? VNFaceObservation else {
-//                throw FaceClustaringError.facesDetcting
-//            }
-            return ALProcessAsset(identifier: asset.identifier, image: asset.image, tags: asset.tags, quality: (request.results?.first as? VNFaceObservation)?.faceCaptureQuality ?? 0, observation: asset.observation)
+            try requestHandler.perform([imageQualityRequest])
+            guard let observations = imageQualityRequest.results as? [VNFaceObservation] else {
+                throw ALFaceClustaringError.facesDetcting
+            }
+            return ALProcessAsset(identifier: asset.identifier, image: asset.image, tags: asset.tags, quality: observations.first?.faceCaptureQuality ?? 0, observation: mapBoundignBoxToRects(observation: observations))
         }
     }
     
     private func tagPhoto(asset:ALProcessAsset) throws -> ALProcessAsset {
         return try autoreleasepool { () -> ALProcessAsset in
             let requestHandler = VNImageRequestHandler(cgImage: (asset.image.cgImage!), options: [:])
-            let request = VNClassifyImageRequest()
-            try requestHandler.perform([request])
+            try requestHandler.perform([tagPhotosRequest])
             var categories: [String] = []
 
-            if let observations = request.results as? [VNClassificationObservation] {
+            if let observations = tagPhotosRequest.results as? [VNClassificationObservation] {
                 categories = observations
                     .filter { $0.hasMinimumRecall(0.01, forPrecision: 0.9) }
                     .reduce(into: [String]()) { arr, observation in arr.append(observation.identifier)  }

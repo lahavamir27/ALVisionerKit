@@ -11,5 +11,5 @@ import Foundation
 public enum ALVisionProcessorType {
     case faceDetection
     case objectDetection
-    case imageQuality
+    case faceCaptureQuality
 }
