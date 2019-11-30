@@ -87,8 +87,8 @@ final class ALImageProcessor {
             let startDate = Date()
             if let asstes = stack.pop() {
                 do {
-                    let asssts = assetMangager.mapAssets(asstes)
-                    let detectObjects = try asssts |> processor
+                    let images = assetMangager.mapAssetsToImages(asstes)
+                    let detectObjects = try images |> processor
                     objects.append(contentsOf: detectObjects)
                 }catch {   }
             }
@@ -106,8 +106,8 @@ final class ALImageProcessor {
                 autoreleasepool{
                     if let asstes = stack.pop() {
                         do {
-                            let asssts = self.assetMangager.mapAssets(asstes)
-                            let detectObjects = try  asssts |> processor
+                            let images = self.assetMangager.mapAssetsToImages(asstes)
+                            let detectObjects = try  images |> processor
                             objects.append(contentsOf: detectObjects)
                         }catch {   }
                     }

@@ -40,9 +40,6 @@ class ViewController: UIViewController {
                     case .failure(_):break
                     }
                 }
-                session.detect(in: UIImage(), model: wave().model, returnType: [Any]?.self) { (result) in
-                    
-                }
             case .failure(_): break
                 // User denied Permission
             }

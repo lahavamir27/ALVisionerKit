@@ -17,6 +17,6 @@ public struct ALProcessedAsset {
         self.localIdentifier = asset.identifier
         self.imageQuality = asset.quality
         self.categories = asset.tags
-        self.boundingBoxes = asset.observation
+        self.boundingBoxes = asset.facesRects
     }
 }

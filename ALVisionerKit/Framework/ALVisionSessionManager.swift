@@ -24,7 +24,7 @@ public final class ALVisionSessionManager {
     }
     
     public func detect(in assets:[PHAsset], with jobTypes:[ALVisionProcessorType], completion:@escaping(Result<[ALProcessedAsset],ALVisionError>)-> Void) {
-        DispatchQueue.global().async {
+        DispatchQueue.global(qos: .utility).async {
             self.processor.performDetection(on: assets, jobTypes: jobTypes, completion: completion)
         }
      }

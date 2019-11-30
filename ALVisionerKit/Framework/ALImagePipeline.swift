@@ -18,7 +18,8 @@ final class ALImagePipeline {
     let faceRequest = VNDetectFaceRectanglesRequest()
     let imageQualityRequest = VNDetectFaceCaptureQualityRequest()
     let tagPhotosRequest = VNClassifyImageRequest()
-
+    let featureDetection = VNDetectFaceLandmarksRequest()
+    
     func pipeline(for type:ALVisionProcessorType) -> ALPipeline {
         switch type {
         case .faceDetection:
@@ -45,10 +46,23 @@ final class ALImagePipeline {
 //            guard !observations.isEmpty else {
 //                throw FaceClustaringError.emptyObservation
 //            }
-            return ALProcessAsset(identifier: asset.identifier, image: asset.image, tags: asset.tags, quality: asset.quality, observation: mapBoundignBoxToRects(observation: observations))
+            return ALProcessAsset(identifier: asset.identifier, image: asset.image, tags: asset.tags, quality: asset.quality, facesRects: mapBoundignBoxToRects(observation: observations))
         }
     }
 
+        private func detectFeaturesFaces(asset:ALProcessAsset) throws -> ALProcessAsset {
+            return try autoreleasepool { () -> ALProcessAsset in
+                let requestHandler = VNImageRequestHandler(cgImage: (asset.image.cgImage!), options: [:])
+                try requestHandler.perform([featureDetection])
+                guard let observations = faceRequest.results as? [VNFaceObservation] else {
+                    throw ALFaceClustaringError.facesDetcting
+                }
+    //            guard !observations.isEmpty else {
+    //                throw FaceClustaringError.emptyObservation
+    //            }
+                return ALProcessAsset(identifier: asset.identifier, image: asset.image, tags: asset.tags, quality: asset.quality, facesRects: mapBoundignBoxToRects(observation: observations))
+            }
+        }
     
     private func imageQuality(asset:ALProcessAsset) throws -> ALProcessAsset {
         return try autoreleasepool { () -> ALProcessAsset in
@@ -57,7 +71,7 @@ final class ALImagePipeline {
             guard let observations = imageQualityRequest.results as? [VNFaceObservation] else {
                 throw ALFaceClustaringError.facesDetcting
             }
-            return ALProcessAsset(identifier: asset.identifier, image: asset.image, tags: asset.tags, quality: observations.first?.faceCaptureQuality ?? 0, observation: mapBoundignBoxToRects(observation: observations))
+            return ALProcessAsset(identifier: asset.identifier, image: asset.image, tags: asset.tags, quality: observations.first?.faceCaptureQuality ?? 0, facesRects: mapBoundignBoxToRects(observation: observations))
         }
     }
     
@@ -73,7 +87,7 @@ final class ALImagePipeline {
                     .reduce(into: [String]()) { arr, observation in arr.append(observation.identifier)  }
             }
             
-            return ALProcessAsset(identifier: asset.identifier, image: asset.image, tags: categories, quality: asset.quality, observation: asset.observation)
+            return ALProcessAsset(identifier: asset.identifier, image: asset.image, tags: categories, quality: asset.quality, facesRects: asset.facesRects)
         }
     }
     

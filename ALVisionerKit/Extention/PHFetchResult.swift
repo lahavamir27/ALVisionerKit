@@ -11,8 +11,10 @@ import Photos
 extension PHFetchResult where ObjectType == PHAsset {
     var objects: [ObjectType] {
         var _objects: [ObjectType] = []
-        enumerateObjects { (object, _, _) in
-            _objects.append(object)
+        enumerateObjects { (asset, _, _) in
+            if !(asset.mediaSubtypes == .photoScreenshot) {
+                _objects.append(asset)
+            }
         }
         return _objects
     }

@@ -12,5 +12,5 @@ struct ALProcessAsset {
     let image:UIImage
     let tags:[String]
     let quality:Float
-    let observation:[CGRect]
+    let facesRects:[CGRect]
 }

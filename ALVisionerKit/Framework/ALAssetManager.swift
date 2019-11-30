@@ -20,23 +20,47 @@ public final class ALAssetManager {
         return fetchOptions
     }()
     
-    func getMyAssets(options:ALClusterMangerOptions) -> ALStack<[PHAsset]> {
-        return chunk(assets: getUserAssets(), usersAssets: options.numberOfUserAssetsToProcess, chunkSize: options.chunckSize) |> stackAssets
+    // Public API
+    
+    public func getUserPhotos(with options:ALFetchOptions, fetchOptions:ALFetchAssetsOptions = ALFetchAssetsOptions()) -> [PHAsset] {
+        let filter = applyFilter(fetchOptions: fetchOptions)
+        let objects = getAssetsBy(options: options, fetchOptions: fetchOptions).objects
+        return objects |> filter
     }
+    
+    // Internal API
     
     func getAssetsStacked(assets:[PHAsset], options:ALClusterMangerOptions = ALClusterMangerOptions()) -> ALStack<[PHAsset]> {
         return chunk(assets: assets, usersAssets: options.numberOfUserAssetsToProcess, chunkSize: options.chunckSize) |> stackAssets
     }
     
     func getAssetsStacked(assets:PHFetchResult<PHAsset>, options:ALClusterMangerOptions = ALClusterMangerOptions()) -> ALStack<[PHAsset]> {
-        let parseAsset = assetParser(asstes: assets)
+        let parseAsset = assets.objects
         return chunk(assets: parseAsset, usersAssets: options.numberOfUserAssetsToProcess, chunkSize: options.chunckSize) |> stackAssets
     }
+    
 
-    public func getUserPhotos(with options:ALFetchOptions, fetchOptions:ALFetchAssetsOptions = ALFetchAssetsOptions()) -> [PHAsset] {
-        let filter = applyFilter(fetchOptions: fetchOptions)
-        return getAssetsBy(options: options, fetchOptions: fetchOptions) |> assetParser |> filter
+    func getMyAssets(options:ALClusterMangerOptions) -> ALStack<[PHAsset]> {
+        return chunk(assets: getUserAssets(), usersAssets: options.numberOfUserAssetsToProcess, chunkSize: options.chunckSize) |> stackAssets
     }
+    
+    func mapAssetsToImages(_ assets:[PHAsset]) -> [ALProcessAsset] {
+        let queue = OperationQueue()
+        var preProcessPHAssets:[ALProcessAsset] = []
+        let blocks = assets.map { (asset) in
+            return BlockOperation {
+                let imageFetcher = ALImageFetcher()
+                if let image = imageFetcher.getUserImages(asset: asset) {
+                    let assettt = ALProcessAsset(identifier: asset.localIdentifier, image: image, tags: [], quality: 0, facesRects: [])
+                    preProcessPHAssets.append(assettt)
+                }
+            }
+        }
+        queue.addOperations(blocks, waitUntilFinished: true)
+        return preProcessPHAssets
+    }
+
+    // Private API
     
     private func getAssetsBy(options:ALFetchOptions, fetchOptions:ALFetchAssetsOptions) -> PHFetchResult<PHAsset> {
         let fetchOption = PHFetchOptions()
@@ -61,17 +85,7 @@ public final class ALAssetManager {
     }
     
     private func getUserAssets() -> [PHAsset] {
-        return assetParser(asstes:PHAsset.fetchAssets(with: .image, options: fetchOptions))
-    }
-    
-    private func assetParser(asstes:PHFetchResult<PHAsset>) -> [PHAsset] {
-        var assets:[PHAsset] = []
-        asstes.enumerateObjects { (asset, _, _) in
-            if !(asset.mediaSubtypes == .photoScreenshot) {
-                assets.append(asset)
-            }
-        }
-        return assets
+        PHAsset.fetchAssets(with: .image, options: fetchOptions).objects
     }
     
     private func applyFilter(fetchOptions:ALFetchAssetsOptions) -> ([PHAsset]) -> [PHAsset] {
@@ -90,9 +104,8 @@ public final class ALAssetManager {
         assets.prefix(usersAssets).chunked(into: chunkSize)
     }
     
-    private func enumarateAssets(assets:[PHAsset]) -> [UIImage] {
+    private func mapAssetsToImages(assets:[PHAsset]) -> [UIImage] {
         let queue = OperationQueue()
-        queue.maxConcurrentOperationCount = 10
         var images:[UIImage] = []
         let blocks = assets.map { (asset) in
             return BlockOperation {
@@ -106,9 +119,8 @@ public final class ALAssetManager {
         return images
     }
     
-    private func enumarateAssets(assets:[PHAsset]) -> [CGImage] {
+    private func mapAssetsToImages(assets:[PHAsset]) -> [CGImage] {
         let queue = OperationQueue()
-        queue.maxConcurrentOperationCount = 10
         var images:[CGImage] = []
         let blocks = assets.map { (asset) in
             return BlockOperation {
@@ -120,22 +132,6 @@ public final class ALAssetManager {
         }
         queue.addOperations(blocks, waitUntilFinished: true)
         return images
-    }
-    
-    func mapAssets(_ assets:[PHAsset]) -> [ALProcessAsset] {
-        let queue = OperationQueue()
-        var preProcessPHAssets:[ALProcessAsset] = []
-        let blocks = assets.map { (asset) in
-            return BlockOperation {
-                let imageFetcher = ALImageFetcher()
-                if let image = imageFetcher.getUserImages(asset: asset) {
-                    let assettt = ALProcessAsset(identifier: asset.localIdentifier, image: image, tags: [], quality: 0, observation: [])
-                    preProcessPHAssets.append(assettt)
-                }
-            }
-        }
-        queue.addOperations(blocks, waitUntilFinished: true)
-        return preProcessPHAssets
     }
 }
 
