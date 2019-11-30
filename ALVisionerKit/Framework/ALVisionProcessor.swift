@@ -17,14 +17,19 @@ final class ALVisionProcessor {
     private var imageFetcher = ALImageFetcher()
     private var imageProcessor = ALImageProcessor()
     
-    func performDetection(on: PHFetchResult<PHAsset>, jobTypes:[ALVisionProcessorType], completion:@escaping(Result<[ALProcessedAsset],ALVisionError>)-> Void) {
-        let stack = assetsManager.getAssetsStacked(assets: on)
-        performOpertion(on:stack, jobTypes:jobTypes, completion:completion)
+    func performDetection(on assets: PHFetchResult<PHAsset>, jobTypes:[ALVisionProcessorType], options:ALSessionOptinos, completion:@escaping(Result<[ALProcessedAsset],ALVisionError>)-> Void) {
+        DispatchQueue.global(qos: options.qos).async {
+            let stack = self.assetsManager.getAssetsStacked(assets: assets, options: options)
+            self.performOpertion(on:stack, jobTypes:jobTypes, completion:completion)
+        }
+
     }
     
-    func performDetection(on: [PHAsset], jobTypes:[ALVisionProcessorType], completion:@escaping (Result<[ALProcessedAsset],ALVisionError>)-> Void) {
-        let stack = assetsManager.getAssetsStacked(assets: on)
-        performOpertion(on:stack, jobTypes:jobTypes, completion:completion)
+    func performDetection(on assets: [PHAsset], jobTypes:[ALVisionProcessorType], options:ALSessionOptinos, completion:@escaping (Result<[ALProcessedAsset],ALVisionError>)-> Void) {
+        DispatchQueue.global(qos: options.qos).async {
+            let stack = self.assetsManager.getAssetsStacked(assets: assets, options: options)
+            self.performOpertion(on:stack, jobTypes:jobTypes, completion:completion)
+        }
     }
     
     private func performOpertion(on stack:ALStack<[PHAsset]>, jobTypes:[ALVisionProcessorType], completion: @escaping (Result<[ALProcessedAsset],ALVisionError>)-> Void) {

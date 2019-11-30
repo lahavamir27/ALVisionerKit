@@ -17,16 +17,12 @@ public final class ALVisionSessionManager {
     //MARK: Public API
     public init() {}
     
-    public func detect(in assets:PHFetchResult<PHAsset>, with jobTypes:[ALVisionProcessorType], completion:@escaping(Result<[ALProcessedAsset],ALVisionError>)-> Void) {
-        DispatchQueue.global().async {
-            self.processor.performDetection(on: assets, jobTypes: jobTypes, completion: completion)
-        }
+    public func detect(in assets:PHFetchResult<PHAsset>, with jobTypes:[ALVisionProcessorType],options:ALSessionOptinos = ALSessionOptinos(), completion:@escaping(Result<[ALProcessedAsset],ALVisionError>)-> Void) {
+        processor.performDetection(on: assets, jobTypes: jobTypes, options:options, completion: completion)
     }
     
-    public func detect(in assets:[PHAsset], with jobTypes:[ALVisionProcessorType], completion:@escaping(Result<[ALProcessedAsset],ALVisionError>)-> Void) {
-        DispatchQueue.global(qos: .utility).async {
-            self.processor.performDetection(on: assets, jobTypes: jobTypes, completion: completion)
-        }
+    public func detect(in assets:[PHAsset], with jobTypes:[ALVisionProcessorType], options:ALSessionOptinos = ALSessionOptinos(), completion:@escaping(Result<[ALProcessedAsset],ALVisionError>)-> Void) {
+        processor.performDetection(on: assets, jobTypes: jobTypes, options:options, completion: completion)
      }
     
     public func detect<T>(in assets:UIImage, model:MLModel, returnType:T.Type, completion:@escaping (Result<T,ALVisionError>)-> Void) {

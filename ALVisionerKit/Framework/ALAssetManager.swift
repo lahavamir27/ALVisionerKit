@@ -30,18 +30,13 @@ public final class ALAssetManager {
     
     // Internal API
     
-    func getAssetsStacked(assets:[PHAsset], options:ALClusterMangerOptions = ALClusterMangerOptions()) -> ALStack<[PHAsset]> {
-        return chunk(assets: assets, usersAssets: options.numberOfUserAssetsToProcess, chunkSize: options.chunckSize) |> stackAssets
+    func getAssetsStacked(assets:[PHAsset], options:ALSessionOptinos) -> ALStack<[PHAsset]> {
+        return chunk(assets: assets, chunkSize: options.parallelProcessQuantity) |> stackAssets
     }
     
-    func getAssetsStacked(assets:PHFetchResult<PHAsset>, options:ALClusterMangerOptions = ALClusterMangerOptions()) -> ALStack<[PHAsset]> {
+    func getAssetsStacked(assets:PHFetchResult<PHAsset>, options:ALSessionOptinos) -> ALStack<[PHAsset]> {
         let parseAsset = assets.objects
-        return chunk(assets: parseAsset, usersAssets: options.numberOfUserAssetsToProcess, chunkSize: options.chunckSize) |> stackAssets
-    }
-    
-
-    func getMyAssets(options:ALClusterMangerOptions) -> ALStack<[PHAsset]> {
-        return chunk(assets: getUserAssets(), usersAssets: options.numberOfUserAssetsToProcess, chunkSize: options.chunckSize) |> stackAssets
+        return chunk(assets: parseAsset, chunkSize: options.parallelProcessQuantity) |> stackAssets
     }
     
     func mapAssetsToImages(_ assets:[PHAsset]) -> [ALProcessAsset] {
@@ -100,8 +95,8 @@ public final class ALAssetManager {
         return stack
     }
     
-    private func chunk(assets:[PHAsset], usersAssets:Int, chunkSize:Int) -> [[PHAsset]] {
-        assets.prefix(usersAssets).chunked(into: chunkSize)
+    private func chunk(assets:[PHAsset], chunkSize:Int) -> [[PHAsset]] {
+        assets.chunked(into: chunkSize)
     }
     
     private func mapAssetsToImages(assets:[PHAsset]) -> [UIImage] {
