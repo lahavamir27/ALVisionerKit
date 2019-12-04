@@ -10,7 +10,7 @@ import Foundation
 import Photos
 import CoreML
 
-public final class ALVisionSessionManager {
+public final class ALVisionSession {
     
     private let processor = ALVisionProcessor()
 

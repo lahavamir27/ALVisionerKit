@@ -11,6 +11,9 @@ struct ALProcessAsset {
     let identifier:String
     let image:UIImage
     let tags:[String]
-    let quality:Float
-    let facesRects:[CGRect]
+    let faces:[ALFace]
+    
+    func duplicate(image:UIImage? = nil, tags:[String]? = nil, faces:[ALFace]? = nil) -> ALProcessAsset {
+        ALProcessAsset(identifier: identifier, image: image ?? self.image, tags: tags ?? self.tags, faces: faces ?? self.faces)
+    }
 }

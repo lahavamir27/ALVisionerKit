@@ -9,6 +9,7 @@ import Foundation
 
 public class ALSessionOptinos {
     public var qos:DispatchQoS.QoSClass = .default
-    public var parallelProcessQuantity:Int = 10
+    public var parallelProcessQuantity:Int = 5
+    public var optimzedFaceDetection:Bool = false
     public init() {}
 }

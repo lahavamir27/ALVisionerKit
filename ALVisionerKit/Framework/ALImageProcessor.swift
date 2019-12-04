@@ -9,6 +9,7 @@
 import Foundation
 import Photos
 
+// Multi pipeline processor hold multi ML pipelines
 typealias ALMultiPipelineProcessor = ([ALProcessAsset]) throws -> [ALProcessedAsset]
 typealias ALStackProcessor = (ALStack<[PHAsset]>) throws -> [ALProcessedAsset]
 
@@ -101,7 +102,7 @@ final class ALImageProcessor {
         return { (stack) in
             var stack = stack
             var objects:[ALProcessedAsset] = []
-            while !stack.isEmpty() && objects.count < 100 {
+            while !stack.isEmpty() {
                 let startDate = Date()
                 autoreleasepool{
                     if let asstes = stack.pop() {

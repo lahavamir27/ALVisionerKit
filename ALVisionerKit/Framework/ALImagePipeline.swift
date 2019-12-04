@@ -15,63 +15,96 @@ typealias ALCustomFilter<T> = (ALCustomProcessAsset) throws -> T
 
 final class ALImagePipeline {
     
-    let faceRequest = VNDetectFaceRectanglesRequest()
-    let imageQualityRequest = VNDetectFaceCaptureQualityRequest()
     let tagPhotosRequest = VNClassifyImageRequest()
-    let featureDetection = VNDetectFaceLandmarksRequest()
     
-    func pipeline(for type:ALVisionProcessorType) -> ALPipeline {
+    
+    func pipeline(for type:ALVisionProcessorType, optimized:Bool = false) throws -> ALPipeline {
         switch type {
         case .faceDetection:
-            return detectFaces
+            return try detectFaces(optimized: optimized)
         case .objectDetection:
             return tagPhoto
         case .faceCaptureQuality:
-            return imageQuality
+            return try imageQuality(optimized: optimized)
+        case .copy:
+            return copy
+        case .faceFeatures:
+            return try detectFaceFeatures(optimized: optimized)
         }
     }
     
-    /// Detect bounding box around faces in image
-    ///
-    /// - Parameter asset: User image
-    ///
-    /// - Returns: ImageObservation struct include vision bounding rect, original image, and image size
-    private func detectFaces(asset:ALProcessAsset) throws -> ALProcessAsset {
-        return try autoreleasepool { () -> ALProcessAsset in
+    private func detectFaces(optimized:Bool) throws -> ALPipeline {
+        return { asset in
+            let faceRequest = VNDetectFaceRectanglesRequest()
             let requestHandler = VNImageRequestHandler(cgImage: (asset.image.cgImage!), options: [:])
+            if !asset.faces.isEmpty {
+                // bounding box already found
+                return asset
+            }
             try requestHandler.perform([faceRequest])
             guard let observations = faceRequest.results as? [VNFaceObservation] else {
                 throw ALFaceClustaringError.facesDetcting
             }
-//            guard !observations.isEmpty else {
-//                throw FaceClustaringError.emptyObservation
-//            }
-            return ALProcessAsset(identifier: asset.identifier, image: asset.image, tags: asset.tags, quality: asset.quality, facesRects: mapBoundignBoxToRects(observation: observations))
+            if optimized {
+                guard !observations.isEmpty else {
+                    throw ALFaceClustaringError.emptyObservation
+                }
+            }
+            return ALProcessAsset(identifier: asset.identifier, image: asset.image, tags: asset.tags, faces: self.mapVNFaceObservationsToFaces(faceObservations: observations))
         }
     }
-
-        private func detectFeaturesFaces(asset:ALProcessAsset) throws -> ALProcessAsset {
-            return try autoreleasepool { () -> ALProcessAsset in
-                let requestHandler = VNImageRequestHandler(cgImage: (asset.image.cgImage!), options: [:])
-                try requestHandler.perform([featureDetection])
-                guard let observations = faceRequest.results as? [VNFaceObservation] else {
-                    throw ALFaceClustaringError.facesDetcting
+    
+    
+    func detectFaceFeatures(optimized:Bool) throws -> ALPipeline {
+        return { asset in
+            let featureDetection = VNDetectFaceLandmarksRequest()
+            if !asset.faces.isEmpty {
+                let observation = self.mapFacesToVNFaceObservation(faces: asset.faces)
+                featureDetection.inputFaceObservations = observation
+            }
+            let requestHandler = VNImageRequestHandler(cgImage: (asset.image.cgImage!), options: [:])
+            
+            try requestHandler.perform([featureDetection])
+            guard let observations = featureDetection.results as? [VNFaceObservation] else {
+                throw ALFaceClustaringError.facesDetcting
+            }
+            if optimized {
+                guard !observations.isEmpty else {
+                    throw ALFaceClustaringError.emptyObservation
                 }
-    //            guard !observations.isEmpty else {
-    //                throw FaceClustaringError.emptyObservation
-    //            }
-                return ALProcessAsset(identifier: asset.identifier, image: asset.image, tags: asset.tags, quality: asset.quality, facesRects: mapBoundignBoxToRects(observation: observations))
+            }
+            if asset.faces.isEmpty {
+                return asset.duplicate(faces: self.mapVNFaceObservationsToFaces(faceObservations: observations))
+            }else{
+                let zippedObservations = Array(zip(asset.faces, observations))
+                return asset.duplicate(faces:self.mapNewVNFaceObservationsToFaces(faceObservations: zippedObservations))
             }
         }
+    }
     
-    private func imageQuality(asset:ALProcessAsset) throws -> ALProcessAsset {
-        return try autoreleasepool { () -> ALProcessAsset in
+    func imageQuality(optimized:Bool) throws -> ALPipeline {
+        return { asset in
+            let imageQualityRequest = VNDetectFaceCaptureQualityRequest()
+            if !asset.faces.isEmpty {
+                let observation = self.mapFacesToVNFaceObservation(faces: asset.faces)
+                imageQualityRequest.inputFaceObservations = observation
+            }
             let requestHandler = VNImageRequestHandler(cgImage: (asset.image.cgImage!), options: [:])
             try requestHandler.perform([imageQualityRequest])
             guard let observations = imageQualityRequest.results as? [VNFaceObservation] else {
                 throw ALFaceClustaringError.facesDetcting
             }
-            return ALProcessAsset(identifier: asset.identifier, image: asset.image, tags: asset.tags, quality: observations.first?.faceCaptureQuality ?? 0, facesRects: mapBoundignBoxToRects(observation: observations))
+            if optimized {
+                guard !observations.isEmpty else {
+                    throw ALFaceClustaringError.emptyObservation
+                }
+            }
+            if asset.faces.isEmpty {
+                return asset.duplicate(faces: self.mapVNFaceObservationsToFaces(faceObservations: observations))
+            }else{
+                let zippedObservations = Array(zip(asset.faces, observations))
+                return asset.duplicate(faces:self.mapNewVNFaceObservationsToFaces(faceObservations: zippedObservations))
+            }
         }
     }
     
@@ -80,14 +113,12 @@ final class ALImagePipeline {
             let requestHandler = VNImageRequestHandler(cgImage: (asset.image.cgImage!), options: [:])
             try requestHandler.perform([tagPhotosRequest])
             var categories: [String] = []
-
             if let observations = tagPhotosRequest.results as? [VNClassificationObservation] {
                 categories = observations
                     .filter { $0.hasMinimumRecall(0.01, forPrecision: 0.9) }
                     .reduce(into: [String]()) { arr, observation in arr.append(observation.identifier)  }
             }
-            
-            return ALProcessAsset(identifier: asset.identifier, image: asset.image, tags: categories, quality: asset.quality, facesRects: asset.facesRects)
+            return ALProcessAsset(identifier: asset.identifier, image: asset.image, tags: categories, faces: asset.faces)
         }
     }
     
@@ -109,11 +140,41 @@ final class ALImagePipeline {
         }
     }
     
+    
+    // Helper
+    private func copy(asset:ALProcessAsset) throws -> ALProcessAsset {
+        return asset
+    }
+    
     private func mapBoundignBoxToRects(observation: [VNFaceObservation]) -> [CGRect] {
         observation.map(convertRect)
     }
     
+    private func mapFacesToVNFaceObservation(faces:[ALFace]) -> [VNFaceObservation] {
+        faces.map(facesToVNFaceObservation)
+    }
+    
+    func mapVNFaceObservationsToFaces(faceObservations:[VNFaceObservation]) -> [ALFace] {
+        faceObservations.map(vNFaceObservationToFace)
+    }
+    
+    func vNFaceObservationToFace(faceObservation:VNFaceObservation) -> ALFace {
+        ALFace(faceObservation: faceObservation)
+    }
+    
+    func mapNewVNFaceObservationsToFaces(faceObservations:[(ALFace,VNFaceObservation)]) -> [ALFace] {
+        faceObservations.map(vNFaceObservationToFace)
+    }
+    
+    func vNFaceObservationToFace(face:ALFace, faceObservation:VNFaceObservation) -> ALFace {
+        face.duplicate(faceQuality: faceObservation.faceCaptureQuality, rect: faceObservation.boundingBox, faceLandmarkRegions: faceObservation)
+    }
+    
     private func convertRect(face:VNFaceObservation) -> CGRect {
         return face.boundingBox
+    }
+    
+    private func facesToVNFaceObservation(face:ALFace) -> VNFaceObservation {
+        return VNFaceObservation(boundingBox: face.rect)
     }
 }

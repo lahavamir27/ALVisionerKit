@@ -10,13 +10,11 @@ import Foundation
 
 public struct ALProcessedAsset {
     let localIdentifier:String
-    let imageQuality:Float
     let categories:[String]
-    let boundingBoxes:[CGRect]
+    let faces:[ALFace]
     init(asset:ALProcessAsset) {
         self.localIdentifier = asset.identifier
-        self.imageQuality = asset.quality
         self.categories = asset.tags
-        self.boundingBoxes = asset.facesRects
+        self.faces = asset.faces
     }
 }
