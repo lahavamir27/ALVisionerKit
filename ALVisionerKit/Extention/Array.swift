@@ -22,7 +22,7 @@ public extension Array where Element == ALProcessedAsset {
         print("\n*************************************************************")
         print("detect \(self.count) photos \n")
         self.forEach { (obj) in
-            print("\n*************************************************************  \nLocal Identifier: \(obj.localIdentifier) \nCategories: \(obj.categories) \n faces:\(obj.faces)")
+            print("\n*************************************************************  \nLocal Identifier: \(obj.localIdentifier) \nCategories: \(obj.categories) \n faces:\(obj.faces)\n texts:\(obj.texts)")
         }
     }
 }

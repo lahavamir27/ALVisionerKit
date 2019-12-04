@@ -13,7 +13,7 @@ import CoreML
 public final class ALVisionSession {
     
     private let processor = ALVisionProcessor()
-
+    
     //MARK: Public API
     public init() {}
     
@@ -23,7 +23,7 @@ public final class ALVisionSession {
     
     public func detect(in assets:[PHAsset], with jobTypes:[ALVisionProcessorType], options:ALSessionOptinos = ALSessionOptinos(), completion:@escaping(Result<[ALProcessedAsset],ALVisionError>)-> Void) {
         processor.performDetection(on: assets, jobTypes: jobTypes, options:options, completion: completion)
-     }
+    }
     
     public func detect<T>(in assets:UIImage, model:MLModel, returnType:T.Type, completion:@escaping (Result<T,ALVisionError>)-> Void) {
         DispatchQueue.global().async {

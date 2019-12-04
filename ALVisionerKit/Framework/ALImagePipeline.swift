@@ -16,7 +16,7 @@ typealias ALCustomFilter<T> = (ALCustomProcessAsset) throws -> T
 final class ALImagePipeline {
     
     let tagPhotosRequest = VNClassifyImageRequest()
-    
+
     
     func pipeline(for type:ALVisionProcessorType, optimized:Bool = false) throws -> ALPipeline {
         switch type {
@@ -30,6 +30,8 @@ final class ALImagePipeline {
             return copy
         case .faceFeatures:
             return try detectFaceFeatures(optimized: optimized)
+        case .textDetecting:
+            return textDetecting
         }
     }
     
@@ -50,7 +52,7 @@ final class ALImagePipeline {
                     throw ALFaceClustaringError.emptyObservation
                 }
             }
-            return ALProcessAsset(identifier: asset.identifier, image: asset.image, tags: asset.tags, faces: self.mapVNFaceObservationsToFaces(faceObservations: observations))
+            return ALProcessAsset(identifier: asset.identifier, image: asset.image, tags: asset.tags, faces: self.mapVNFaceObservationsToFaces(faceObservations: observations), texts: asset.texts)
         }
     }
     
@@ -109,7 +111,6 @@ final class ALImagePipeline {
     }
     
     private func tagPhoto(asset:ALProcessAsset) throws -> ALProcessAsset {
-        return try autoreleasepool { () -> ALProcessAsset in
             let requestHandler = VNImageRequestHandler(cgImage: (asset.image.cgImage!), options: [:])
             try requestHandler.perform([tagPhotosRequest])
             var categories: [String] = []
@@ -118,8 +119,17 @@ final class ALImagePipeline {
                     .filter { $0.hasMinimumRecall(0.01, forPrecision: 0.9) }
                     .reduce(into: [String]()) { arr, observation in arr.append(observation.identifier)  }
             }
-            return ALProcessAsset(identifier: asset.identifier, image: asset.image, tags: categories, faces: asset.faces)
+        return ALProcessAsset(identifier: asset.identifier, image: asset.image, tags: categories, faces: asset.faces, texts: asset.texts)
+    }
+    
+    func textDetecting(asset:ALProcessAsset) throws -> ALProcessAsset {
+        let requestHandler = VNImageRequestHandler(cgImage: (asset.image.cgImage!), options: [:])
+        let textDetectingRequest = VNRecognizeTextRequest()
+        try requestHandler.perform([textDetectingRequest])
+        guard let observations = textDetectingRequest.results as? [VNRecognizedTextObservation] else {
+            throw ALFaceClustaringError.emptyObservation
         }
+        return asset.duplicate(texts: mapObservationToTexts(observations: observations))
     }
     
     func custom<T>(model:MLModel) -> ALCustomFilter<T> {
@@ -168,6 +178,22 @@ final class ALImagePipeline {
     
     func vNFaceObservationToFace(face:ALFace, faceObservation:VNFaceObservation) -> ALFace {
         face.duplicate(faceQuality: faceObservation.faceCaptureQuality, rect: faceObservation.boundingBox, faceLandmarkRegions: faceObservation)
+    }
+    
+    func mapObservationToTexts(observations:[VNRecognizedTextObservation]) -> [ALText] {
+        observations.compactMap(observationToText)
+    }
+    
+    func observationToText(observation:VNRecognizedTextObservation) -> ALText? {
+        guard let bestCandidate = observation.topCandidates(5).first else {
+            print("No candidate")
+            return nil
+        }
+        if bestCandidate.confidence > 0.8 {
+            return ALText(rect: observation.boundingBox, text: bestCandidate.string)
+        }else{
+            return nil
+        }
     }
     
     private func convertRect(face:VNFaceObservation) -> CGRect {

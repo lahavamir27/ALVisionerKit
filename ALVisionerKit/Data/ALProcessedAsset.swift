@@ -12,9 +12,12 @@ public struct ALProcessedAsset {
     let localIdentifier:String
     let categories:[String]
     let faces:[ALFace]
+    let texts:[ALText]
+
     init(asset:ALProcessAsset) {
         self.localIdentifier = asset.identifier
         self.categories = asset.tags
         self.faces = asset.faces
+        self.texts = asset.texts
     }
 }

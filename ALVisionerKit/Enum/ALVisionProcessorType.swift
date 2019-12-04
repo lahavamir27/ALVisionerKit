@@ -14,4 +14,5 @@ public enum ALVisionProcessorType {
     case faceCaptureQuality
     case copy
     case faceFeatures
+    case textDetecting
 }

@@ -13,6 +13,7 @@
 		36E051958BB555F3D637C25CF6D3FCA6 /* ALVisionerKit-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = B7C157677AA3AA55D8DE2A85E3BD0202 /* ALVisionerKit-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		477E10F686DE859D65E7C14CC114554B /* Pods-ALVisionerKit_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 5A65348B1803F3CA95B775E47DDF8384 /* Pods-ALVisionerKit_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4DE2108609AAFB40473B3FC1FF25FA7F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
+		542E419B23985C4F00C8C98C /* ALText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542E419A23985C4F00C8C98C /* ALText.swift */; };
 		54713A4D238EA47600C4C3F2 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54713A4C238EA47600C4C3F2 /* Accelerate.framework */; };
 		54713A57238EA78400C4C3F2 /* ALCropFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54713A4F238EA78300C4C3F2 /* ALCropFileManager.swift */; };
 		54713A58238EA78400C4C3F2 /* ALPhotosAuthorization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54713A50238EA78300C4C3F2 /* ALPhotosAuthorization.swift */; };
@@ -34,7 +35,6 @@
 		54713A75238EA7EB00C4C3F2 /* scaling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54713A72238EA7EB00C4C3F2 /* scaling.swift */; };
 		54713A78238EA82C00C4C3F2 /* ALStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54713A77238EA82C00C4C3F2 /* ALStack.swift */; };
 		54713A7B238EA85700C4C3F2 /* ALOperators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54713A7A238EA85700C4C3F2 /* ALOperators.swift */; };
-		54713A7E238EA87200C4C3F2 /* ALClusterMangerOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54713A7D238EA87200C4C3F2 /* ALClusterMangerOptions.swift */; };
 		54A795A7238FFFDF0030DAE0 /* ALFetchAssetsOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54A795A6238FFFDF0030DAE0 /* ALFetchAssetsOptions.swift */; };
 		54A795A9239000820030DAE0 /* ALFetchOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54A795A8239000820030DAE0 /* ALFetchOptions.swift */; };
 		54A795AB23900A3E0030DAE0 /* ALCropFileManagerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54A795AA23900A3E0030DAE0 /* ALCropFileManagerError.swift */; };
@@ -76,6 +76,7 @@
 		3D515F823A2216E924C71202BC48A981 /* Pods-ALVisionerKit_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-ALVisionerKit_Tests-dummy.m"; sourceTree = "<group>"; };
 		3F2189B2CEA404B807F0F312EF450A0A /* Pods-ALVisionerKit_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-ALVisionerKit_Tests-umbrella.h"; sourceTree = "<group>"; };
 		4E25F6439D34C1F43AAB3ECD70FE7CDB /* Pods-ALVisionerKit_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-ALVisionerKit_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		542E419A23985C4F00C8C98C /* ALText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ALText.swift; sourceTree = "<group>"; };
 		54713A4C238EA47600C4C3F2 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		54713A4F238EA78300C4C3F2 /* ALCropFileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ALCropFileManager.swift; sourceTree = "<group>"; };
 		54713A50238EA78300C4C3F2 /* ALPhotosAuthorization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ALPhotosAuthorization.swift; sourceTree = "<group>"; };
@@ -97,7 +98,6 @@
 		54713A72238EA7EB00C4C3F2 /* scaling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = scaling.swift; sourceTree = "<group>"; };
 		54713A77238EA82C00C4C3F2 /* ALStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ALStack.swift; sourceTree = "<group>"; };
 		54713A7A238EA85700C4C3F2 /* ALOperators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ALOperators.swift; sourceTree = "<group>"; };
-		54713A7D238EA87200C4C3F2 /* ALClusterMangerOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ALClusterMangerOptions.swift; sourceTree = "<group>"; };
 		54A795A6238FFFDF0030DAE0 /* ALFetchAssetsOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ALFetchAssetsOptions.swift; sourceTree = "<group>"; };
 		54A795A8239000820030DAE0 /* ALFetchOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ALFetchOptions.swift; sourceTree = "<group>"; };
 		54A795AA23900A3E0030DAE0 /* ALCropFileManagerError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ALCropFileManagerError.swift; sourceTree = "<group>"; };
@@ -189,6 +189,7 @@
 				54713A60238EA7A900C4C3F2 /* ALProcessAsset.swift */,
 				54713A62238EA7A900C4C3F2 /* ALProcessedAsset.swift */,
 				54F2BAA52392A2640044A09A /* ALFace.swift */,
+				542E419A23985C4F00C8C98C /* ALText.swift */,
 			);
 			name = Data;
 			path = ALVisionerKit/Data;
@@ -241,7 +242,6 @@
 		54713A7C238EA85D00C4C3F2 /* Options */ = {
 			isa = PBXGroup;
 			children = (
-				54713A7D238EA87200C4C3F2 /* ALClusterMangerOptions.swift */,
 				54A795A6238FFFDF0030DAE0 /* ALFetchAssetsOptions.swift */,
 				54F2BAA3239283180044A09A /* ALSessionOptinos.swift */,
 			);
@@ -539,12 +539,12 @@
 				54F2BAA02391B4BB0044A09A /* PHFetchResult.swift in Sources */,
 				59EBBF720AA6BB7FDCF1A6524A4BAB12 /* ReplaceMe.swift in Sources */,
 				54713A65238EA7A900C4C3F2 /* ALProcessedAsset.swift in Sources */,
+				542E419B23985C4F00C8C98C /* ALText.swift in Sources */,
 				54713A5A238EA78400C4C3F2 /* ALVisionProcessor.swift in Sources */,
 				54713A6B238EA7CC00C4C3F2 /* ALVisionProcessorType.swift in Sources */,
 				54A795A9239000820030DAE0 /* ALFetchOptions.swift in Sources */,
 				54713A6C238EA7CC00C4C3F2 /* ALVisionError.swift in Sources */,
 				54713A73238EA7EB00C4C3F2 /* Data.swift in Sources */,
-				54713A7E238EA87200C4C3F2 /* ALClusterMangerOptions.swift in Sources */,
 				54713A5B238EA78400C4C3F2 /* ALAssetManager.swift in Sources */,
 				54713A63238EA7A900C4C3F2 /* ALProcessAsset.swift in Sources */,
 			);

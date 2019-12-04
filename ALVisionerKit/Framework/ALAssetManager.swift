@@ -46,7 +46,7 @@ public final class ALAssetManager {
             return BlockOperation {
                 let imageFetcher = ALImageFetcher()
                 if let image = imageFetcher.getUserImages(asset: asset) {
-                    let assettt = ALProcessAsset(identifier: asset.localIdentifier, image: image, tags: [],faces: [])
+                    let assettt = ALProcessAsset(identifier: asset.localIdentifier, image: image, tags: [],faces: [], texts: [])
                     preProcessPHAssets.append(assettt)
                 }
             }

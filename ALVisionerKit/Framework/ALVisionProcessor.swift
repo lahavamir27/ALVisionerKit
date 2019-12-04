@@ -72,20 +72,18 @@ final class ALVisionProcessor {
         return processor |> imageProcessor.createStackProcessor
     }
     
-
-    
     private func imagesProcessor(types:[ALVisionProcessorType], optimized:Bool) throws ->  ALMultiPipelineProcessor {
         let filter = try types.reduce(imageFilter.pipeline(for: .copy)) { (result, type) throws -> ALPipeline in
             return try add(filter: result, type: type, optimized: optimized)
         }
-        let mappedFillter = filter |>> mapDetectedObject
+        let mappedFillter = filter >>> mapDetectedObject
         return imageProcessor.singleProcessProcessor(preformOn: mappedFillter)
     }
     
     
     // HELPER
     private func add(filter:@escaping ALPipeline, type:ALVisionProcessorType, optimized:Bool) throws -> ALPipeline {
-        return try filter |>>  imageFilter.pipeline(for: type, optimized: optimized)
+        return try filter >>> imageFilter.pipeline(for: type, optimized: optimized)
     }
     
     private func mapDetectedObjects(objects:[ALProcessAsset]) -> [ALProcessedAsset] {
